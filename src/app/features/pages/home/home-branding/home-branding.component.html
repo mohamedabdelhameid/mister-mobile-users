@@ -1,0 +1,24 @@
+@if (brands().length > 0) {
+  <div class="p-5 mt-5">
+    <p class="text-xl md:text-5xl text-gray-500">الماركات</p>
+    <owl-carousel-o [options]="customOptions">
+      @for (brand of brands(); track brand.id) {
+        <ng-template carouselSlide [id]="brand.id">
+          <div
+            class="bg-neutral-900 rounded-2xl my-3.5 mx-5 h-40 flex flex-col items-center justify-center text-center cursor-pointer transition duration-300 hover:bg-neutral-800 hover:scale-105 hover:shadow-2xl"
+          >
+            <img
+              loading="lazy"
+              [src]="'http://127.0.0.1:8000' + brand.image"
+              class="w-12 h-12 object-contain mb-3 opacity-80"
+              alt="brand photo"
+            />
+            <p class="text-white font-semibold text-lg">
+              {{ brand.name }}
+            </p>
+          </div>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+}

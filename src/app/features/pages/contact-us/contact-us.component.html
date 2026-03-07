@@ -1,0 +1,205 @@
+<div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-16 px-4">
+  <div class="fixed my-10 inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+    ></div>
+    <div
+      class="absolute bottom-[0%] right-[-5%] w-[400px] h-[400px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative my-10 z-10 max-w-5xl mx-auto">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-70">تواصل معنا</span>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+    </div>
+
+    <div class="text-center mb-14">
+      <h1 class="text-5xl font-black text-white leading-tight tracking-tight mb-3">
+        نحن هنا <span class="text-[#D4AF37]">لمساعدتك</span>
+      </h1>
+      <p class="text-white/40 text-base max-w-md mx-auto leading-relaxed">
+        هل لديك استفسار أو مقترح؟ تواصل معنا وسنرد عليك في أقرب وقت ممكن.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+      <div class="lg:col-span-2 flex flex-col gap-4">
+        @for (
+          item of [
+            { icon: '📍', label: 'العنوان', value: 'سوهاج ، مصر' },
+            { icon: 'wa', label: 'واتساب', value: '201120203912' },
+            { icon: '✉️', label: 'البريد الإلكتروني', value: 'info@example.com' },
+            { icon: '🕐', label: 'ساعات العمل', value: '24/7 يوميا' },
+          ];
+          track item.label
+        ) {
+          <div
+            class="flex items-start gap-4 bg-white/3 border border-white/5 hover:border-[#D4AF37]/20 rounded-2xl p-4 transition-colors duration-200"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style="background: rgba(212, 175, 55, 0.1)"
+            >
+              @if (item.icon === 'wa') {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 fill-[#25D366]"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.24-1.44l-.38-.22-3.67.96.98-3.58-.25-.4A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.17 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.16 8.16 0 0 1-2.4-1.48 9.01 9.01 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34z"
+                  />
+                </svg>
+              } @else {
+                <span class="text-lg">{{ item.icon }}</span>
+              }
+            </div>
+            <div>
+              <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-1">
+                {{ item.label }}
+              </p>
+              <p class="text-white text-sm font-semibold">{{ item.value }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="lg:col-span-3">
+        <div
+          class="relative rounded-2xl border border-white/5 bg-white/3 p-8"
+          style="
+            box-shadow:
+              0 0 60px rgba(212, 175, 55, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+          "
+        >
+          <div
+            class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm"
+          ></div>
+          <div
+            class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm"
+          ></div>
+          <div
+            class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm"
+          ></div>
+          <div
+            class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm"
+          ></div>
+
+          <form
+            class="flex flex-col gap-5"
+            dir="rtl"
+            [formGroup]="contactForm"
+            (submit)="onSubmit()"
+          >
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الاسم</label>
+                <input
+                  type="text"
+                  placeholder="اكتب اسمك"
+                  formControlName="name"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+                />
+                @if (
+                  contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']
+                ) {
+                  <p class="text-red-500 text-xs">الاسم مطلوب</p>
+                }
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+                  >البريد الإلكتروني</label
+                >
+                <input
+                  type="email"
+                  placeholder="example@email.com"
+                  formControlName="email"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+                />
+                @if (
+                  contactForm.get('email')?.touched &&
+                  contactForm.get('email')?.errors?.['required']
+                ) {
+                  <p class="text-red-500 text-xs">البريد مطلوب</p>
+                }
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الرسالة</label>
+              <textarea
+                rows="4"
+                placeholder="اكتب رسالتك هنا..."
+                formControlName="message"
+                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+              ></textarea>
+              @if (
+                contactForm.get('message')?.touched &&
+                contactForm.get('message')?.errors?.['required']
+              ) {
+                <p class="text-red-500 text-xs">محتوى الرسالة مطلوب</p>
+              }
+            </div>
+
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent"
+            ></div>
+
+            <button
+              type="submit"
+              class="relative flex disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm tracking-wider overflow-hidden cursor-pointer not-[disabled]:group"
+              style="
+                background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                color: #0a0a0a;
+              "
+              [disabled]="contactForm.invalid || isLoading()"
+            >
+              @if (isLoading()) {
+                <span class="flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+                  <span>جاري الإرسال...</span>
+                </span>
+              } @else {
+                <span class="relative z-10 flex items-center gap-2">
+                  إرسال الرسالة
+                  <i
+                    class="fa-solid fa-paper-plane transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  ></i>
+                </span>
+                <div
+                  class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                ></div>
+              }
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8 mb-16">
+    <div class="p-8 rounded-2xl shadow-sm hover:shadow-lg transition border border-gray-800">
+      <div class="text-yellow-500 text-3xl mb-4">🎯</div>
+      <h3 class="text-xl font-semibold text-white mb-3">رؤيتنا</h3>
+      <p class="text-gray-400 leading-relaxed">
+        نسعى لأن نكون من أكثر متاجر الموبايلات الإلكترونية ثقة في السوق المصري، من خلال تقديم تجربة
+        شراء واضحة وآمنة وسريعة تلبي احتياجات العملاء.
+      </p>
+    </div>
+
+    <div class="p-8 rounded-2xl shadow-sm hover:shadow-lg transition border border-gray-800">
+      <div class="text-yellow-500 text-3xl mb-4">🚀</div>
+      <h3 class="text-xl font-semibold text-white mb-3">مهمتنا</h3>
+      <p class="text-gray-400 leading-relaxed">
+        توفير أحدث الموبايلات الأصلية بأسعار واضحة ومنافسة، مع ضمان تجربة شراء تعتمد على الفحص قبل
+        الاستلام والدفع الآمن.
+      </p>
+    </div>
+  </div>
+</div>

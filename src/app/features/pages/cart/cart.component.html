@@ -1,0 +1,245 @@
+@if (cartItems()?.items) {
+  <div
+    class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-12 px-4"
+    dir="rtl"
+  >
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+        style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+      ></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+        <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60">LUXA Store</span>
+        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+      </div>
+
+      <div class="mb-8">
+        <h1 class="text-4xl font-black text-white mb-1">
+          سلة <span class="text-[#D4AF37]">الشراء</span>
+        </h1>
+        <p class="text-white/30 text-sm">
+          <span class="text-[#D4AF37] font-bold">{{ cartItems()?.items?.length }}</span> منتج في
+          السلة
+        </p>
+      </div>
+
+      @if (cartItems()?.items!.length === 0) {
+        <div class="flex flex-col items-center justify-center py-28 gap-4">
+          <div
+            class="w-20 h-20 rounded-2xl flex items-center justify-center mb-2"
+            style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
+          >
+            <i class="fa-solid fa-cart-shopping text-3xl text-[#D4AF37]/40"></i>
+          </div>
+          <p class="text-white/30 text-lg font-semibold">السلة فارغة</p>
+          <p class="text-white/20 text-sm">أضف بعض المنتجات للبدء</p>
+          <a
+            routerLink="/mobiles"
+            class="mt-2 px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              color: #0a0a0a;
+            "
+          >
+            تصفح المنتجات
+          </a>
+        </div>
+      }
+
+      @if (cartItems()?.items!.length > 0) {
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          <div class="lg:col-span-2 flex flex-col gap-3">
+            @for (item of cartItems()?.items; track item.id) {
+              <div
+                class="group relative flex items-center gap-4 bg-white/3 border border-white/5 rounded-2xl p-4 hover:border-[#D4AF37]/20 transition-colors duration-200"
+              >
+                <div
+                  class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-[#111] flex items-center justify-center"
+                >
+                  <img
+                    loading="lazy"
+                    [src]="'http://127.0.0.1:8000' + item.product.image_cover"
+                    [alt]="item.product.title"
+                    class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-white font-bold text-sm leading-snug truncate">
+                    {{ item.product.title }}
+                  </h3>
+                  <p class="text-white/30 text-xs mt-0.5">{{ item.product.storage }}</p>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-white/40 text-xs">اللون</span>
+
+                    <div
+                      class="w-4 h-4 rounded-full border border-white/20"
+                      [style.background]="findColor(item.mobile_color.color_id)?.hex_code"
+                    ></div>
+                  </div>
+
+                  <div class="flex items-center gap-2 mt-3">
+                    <button
+                      (click)="updatedQuantity(item.id, { quantity: item.quantity - 1 })"
+                      class="w-7 h-7 rounded-lg flex items-center cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 justify-center bg-white/5 border border-white/10 text-white/40 transition-all duration-200 font-bold"
+                      [class.hover:border-[#D4AF37]/40]="item.quantity > 1"
+                      [class.hover:text-[#D4AF37]]="item.quantity > 1"
+                      [disabled]="item.quantity === 1"
+                    >
+                      −
+                    </button>
+                    <span class="text-white font-black text-sm w-6 text-center">{{
+                      item.quantity
+                    }}</span>
+                    <button
+                      (click)="updatedQuantity(item.id, { quantity: item.quantity + 1 })"
+                      class="w-7 h-7 rounded-lg flex items-center cursor-pointer justify-center bg-white/5 border border-white/10 text-white/40 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer font-bold"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex flex-col items-end gap-3 flex-shrink-0">
+                  <button
+                    (click)="deleteProductItem(item.id)"
+                    class="w-7 h-7 rounded-full flex items-center justify-center text-white/20 hover:text-red-400 hover:bg-red-400/10 transition-all duration-200 cursor-pointer"
+                  >
+                    <i class="fa-solid fa-trash-can text-xs"></i>
+                  </button>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-[#D4AF37] font-black text-base">{{
+                      +item.price * item.quantity
+                    }}</span>
+                    <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                  </div>
+                </div>
+              </div>
+            }
+
+            <button
+              (click)="deleteAllCartItems()"
+              class="self-start flex items-center gap-2 text-xs text-white/25 hover:text-red-400 transition-colors duration-200 cursor-pointer mt-1 px-2"
+            >
+              <i class="fa-solid fa-trash-can text-xs"></i>
+              مسح السلة
+            </button>
+          </div>
+
+          <div class="lg:col-span-1">
+            <div
+              class="relative bg-white/3 border border-white/5 rounded-2xl p-6 sticky top-6"
+              style="box-shadow: 0 0 40px rgba(212, 175, 55, 0.05)"
+            >
+              <div
+                class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+              ></div>
+              <div
+                class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+              ></div>
+              <div
+                class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+              ></div>
+              <div
+                class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+              ></div>
+
+              <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-4">ملخص الطلب</p>
+
+              <div class="flex flex-col gap-3 mb-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-white/40 text-sm">عدد المنتجات</span>
+                  <span class="text-white font-semibold text-sm">{{
+                    cartItems()?.items?.length
+                  }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white/40 text-sm">المجموع الفرعي</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-white font-semibold text-sm">{{
+                      cartItems()?.total_price
+                    }}</span>
+                    <span class="text-white/30 text-xs">ج.م</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-white/40 text-sm">الشحن</span>
+                  <span class="text-[#D4AF37] text-sm font-semibold">عند الاستلام</span>
+                </div>
+              </div>
+
+              <div
+                class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent mb-4"
+              ></div>
+
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-white font-bold">الإجمالي</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-[#D4AF37] font-black text-2xl">{{
+                    cartItems()?.total_price
+                  }}</span>
+                  <span class="text-[#D4AF37]/60 text-sm">ج.م</span>
+                </div>
+              </div>
+
+              <button
+                (click)="openModal()"
+                class="relative w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
+                style="
+                  background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                  color: #0a0a0a;
+                "
+              >
+                <span class="relative z-10 flex items-center gap-2">
+                  إتمام الطلب
+                  <i
+                    class="fa-solid fa-arrow-left transition-transform duration-200 group-hover:-translate-x-1"
+                  ></i>
+                </span>
+                <div
+                  class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                ></div>
+              </button>
+
+              <app-modal></app-modal>
+
+              <a
+                routerLink="/mobiles"
+                class="flex items-center justify-center gap-2 mt-3 text-white/30 hover:text-[#D4AF37] text-sm transition-colors duration-200 cursor-pointer"
+              >
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+                متابعة التسوق
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="flex flex-col items-center justify-center py-55 gap-4">
+    <div
+      class="w-20 h-20 rounded-2xl flex items-center justify-center mb-2"
+      style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
+    >
+      <i class="fa-solid fa-cart-shopping text-3xl text-[#D4AF37]/40"></i>
+    </div>
+    <p class="text-white/30 text-lg font-semibold">السلة فارغة</p>
+    <p class="text-white/20 text-sm">أضف بعض المنتجات للبدء</p>
+    <a
+      routerLink="/mobiles"
+      class="mt-2 px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
+      style="
+        background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+        color: #0a0a0a;
+      "
+    >
+      تصفح المنتجات
+    </a>
+  </div>
+}

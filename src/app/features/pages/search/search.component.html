@@ -1,0 +1,219 @@
+<div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-12 px-4" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+    ></div>
+    <div
+      class="absolute bottom-[5%] left-[-5%] w-[400px] h-[400px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-70">بحث المنتجات</span>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+    </div>
+
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-black text-white leading-tight mb-2">
+        ابحث عن <span class="text-[#D4AF37]">موبايلك المثالي</span>
+      </h1>
+      <p class="text-white/40 text-sm">اكتب اسم الموبايل للعثور عليه بسرعة</p>
+    </div>
+
+    <div class="relative mb-6">
+      <div
+        class="flex items-center bg-white/3 border border-white/10 rounded-2xl px-5 py-4 gap-3 focus-within:border-[#D4AF37]/50 transition-colors duration-300"
+        style="box-shadow: 0 0 40px rgba(212, 175, 55, 0.05)"
+      >
+        <div
+          class="absolute top-2 right-2 w-3 h-3 border-t border-r border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute top-2 left-2 w-3 h-3 border-t border-l border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-2 left-2 w-3 h-3 border-b border-l border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+        ></div>
+
+        <i class="fa-solid fa-magnifying-glass text-[#D4AF37]/60 text-lg flex-shrink-0"></i>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          placeholder="ابحث باسم الموبايل..."
+          class="flex-1 bg-transparent outline-none text-white placeholder-white/20 text-base"
+        />
+        @if (searchQuery()) {
+          <button
+            (click)="clearSearch()"
+            class="w-7 h-7 rounded-full flex items-center justify-center bg-white/8 text-white/30 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+          >
+            <i class="fa-solid fa-xmark text-xs"></i>
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2">
+        <span class="text-[#D4AF37] font-black text-xl">{{ filteredProducts().length }}</span>
+        <span class="text-white/30 text-sm">نتيجة</span>
+        @if (searchQuery()) {
+          <span class="text-white/20 text-sm"
+            >لـ "<span class="text-white/50">{{ searchQuery() }}</span
+            >"</span
+          >
+        }
+      </div>
+
+      <div class="flex items-center bg-white/5 border border-white/10 rounded-xl p-1 gap-1">
+        <button
+          (click)="viewMode.set('grid')"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer"
+          [class]="
+            viewMode() === 'grid' ? 'bg-[#D4AF37] text-black' : 'text-white/30 hover:text-white/60'
+          "
+          title="عرض شبكي"
+        >
+          <i class="fa-solid fa-grip text-sm"></i>
+        </button>
+        <button
+          (click)="viewMode.set('list')"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer"
+          [class]="
+            viewMode() === 'list' ? 'bg-[#D4AF37] text-black' : 'text-white/30 hover:text-white/60'
+          "
+          title="عرض قائمة"
+        >
+          <i class="fa-solid fa-list text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    @if (filteredProducts().length === 0) {
+      <div class="flex flex-col items-center justify-center py-24 gap-4">
+        <div class="text-[#D4AF37] text-6xl opacity-20">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <p class="text-white/30 text-lg font-semibold">لا توجد نتائج</p>
+        <p class="text-white/20 text-sm">جرّب كلمة بحث مختلفة</p>
+      </div>
+    }
+
+    @if (filteredProducts().length > 0 && viewMode() === 'grid') {
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for (product of filteredProducts(); track product.id) {
+          <div
+            class="group relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-[#D4AF37]/30 transition-all duration-300"
+            style="box-shadow: 0 0 0 0 rgba(212, 175, 55, 0)"
+            (click)="router.navigate(['/mobiles', product.id])"
+          >
+            <div
+              class="absolute top-2 right-2 w-4 h-4 border-t border-r border-[#D4AF37]/20 rounded-tr-sm z-10 group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+            ></div>
+            <div
+              class="absolute top-2 left-2 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm z-10 group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+            ></div>
+
+            <div class="relative overflow-hidden bg-[#111] h-44 flex items-center justify-center">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              ></div>
+              <img
+                loading="lazy"
+                [src]="'http://127.0.0.1:8000' + product.image_cover"
+                [alt]="product.title"
+                class="h-36 w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div class="p-4 flex flex-col gap-2">
+              <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase">
+                {{ product.brand.name }}
+              </p>
+              <h3
+                class="text-white font-bold text-sm leading-snug line-clamp-2 group-hover:text-[#D4AF37] transition-colors duration-200"
+              >
+                {{ product.title }}
+              </h3>
+              <div class="flex items-center justify-between mt-1">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-[#D4AF37] font-black text-base">{{ product.final_price }}</span>
+                  <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                </div>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+                  <span class="text-white/30 text-[10px]">{{ product.status }}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (filteredProducts().length > 0 && viewMode() === 'list') {
+      <div class="flex flex-col gap-3">
+        @for (product of filteredProducts(); track product.id) {
+          <div
+            class="group flex items-center gap-5 bg-white/3 border border-white/5 rounded-2xl p-4 cursor-pointer hover:border-[#D4AF37]/30 transition-all duration-300"
+            (click)="router.navigate(['/mobiles', product.id])"
+          >
+            <div
+              class="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-[#111] flex items-center justify-center"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              ></div>
+              <img
+                loading="lazy"
+                [src]="'http://127.0.0.1:8000' + product.image_cover"
+                [alt]="product.title"
+                class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-0.5">
+                {{ product.brand.name }}
+              </p>
+              <h3
+                class="text-white font-bold text-base leading-snug group-hover:text-[#D4AF37] transition-colors duration-200 truncate"
+              >
+                {{ product.title }}
+              </h3>
+              <div class="flex items-center gap-3 mt-1.5 flex-wrap">
+                <span class="text-white/30 text-xs">{{ product.storage }}</span>
+                <span class="text-white/10">•</span>
+                <span class="text-white/30 text-xs">{{ product.operating_system }}</span>
+                <span class="text-white/10">•</span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+                  <span class="text-white/30 text-xs">{{ product.status }}</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="flex-shrink-0 flex flex-col items-end gap-2">
+              <div class="flex items-baseline gap-1">
+                <span class="text-[#D4AF37] font-black text-xl">{{ product.final_price }}</span>
+                <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+              </div>
+              <span
+                class="text-white/20 group-hover:text-[#D4AF37]/60 transition-colors duration-200"
+              >
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

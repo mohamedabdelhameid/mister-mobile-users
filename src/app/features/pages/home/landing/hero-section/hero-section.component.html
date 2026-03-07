@@ -1,0 +1,63 @@
+<section class="w-full text-white">
+  <div class="container mx-auto px-4 py-10 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="relative flex justify-center">
+        <img
+          src="./bannarLUXA.png"
+          alt="LUXA store design"
+          class="w-full max-w-md md:max-w-lg object-contain"
+          loading="lazy"
+          fetchpriority="high"
+        />
+
+        <div
+          class="absolute bottom-0 translate-y-1/2 md:translate-y-1/3 left-1/2 -translate-x-1/2 md:left-0 md:-translate-x-1/8 bg-neutral-900 border border-neutral-700 rounded-xl px-6 py-4 shadow-xl text-center md:text-right w-65 sm:w-auto"
+        >
+          <p class="text-yellow-500 font-extrabold text-xl sm:text-2xl">توصيل في اليوم التالي</p>
+          <p class="font-semibold text-lg sm:text-xl mt-1">سوهاج ، أسيوط</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 text-center md:text-right mt-5">
+        <span
+          class="inline-block border-2 border-yellow-500 px-5 py-1.5 rounded-full text-sm font-semibold"
+        >
+          حصرياً في مصر
+        </span>
+
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          فخامة <span class="text-yellow-500">تثق فيها</span>
+        </h2>
+
+        <p class="text-neutral-300 max-w-lg mx-auto md:mx-0">
+          وجهتك الأولى لأرقى الهواتف الذكية. منتجات أصلية، ضمان، وتجربة تسوق تليق بكم.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <button
+            class="flex cursor-pointer items-center justify-center gap-2 bg-yellow-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-yellow-400 active:scale-95 transition"
+          >
+            تسوق الآن
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </button>
+
+          <button
+            class="flex cursor-pointer items-center justify-center gap-2 border border-neutral-600 px-6 py-3 rounded-lg hover:border-yellow-500 hover:text-yellow-400 transition"
+            (click)="onWhatsAppOrder()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 fill-green-500"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.24-1.44l-.38-.22-3.67.96.98-3.58-.25-.4A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.17 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.16 8.16 0 0 1-2.4-1.48 9.01 9.01 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34z"
+              />
+            </svg>
+            طلب عبر واتساب
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,279 @@
+@if (profile()) {
+  <div
+    class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-12 px-4"
+    dir="rtl"
+  >
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+        style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+      ></div>
+      <div
+        class="absolute bottom-[5%] left-[-5%] w-[350px] h-[350px] rounded-full"
+        style="background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%)"
+      ></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+        <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60">LUXA Store</span>
+        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-6 mb-8"
+        style="
+          box-shadow:
+            0 0 50px rgba(212, 175, 55, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        "
+      >
+        <div
+          class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+        ></div>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div class="relative flex-shrink-0">
+            <div
+              class="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-black text-black"
+              style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%)"
+            >
+              {{ profile()?.first_name?.charAt(0) }}
+            </div>
+            <div
+              class="absolute -bottom-1 -left-1 w-5 h-5 rounded-full flex items-center justify-center bg-[#0a0a0a] border-2 border-[#D4AF37]"
+            >
+              <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+            </div>
+          </div>
+
+          <div class="flex-1">
+            <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-1">الملف الشخصي</p>
+            <h2 class="text-white font-black text-2xl mb-1">
+              {{ profile()?.first_name }} {{ profile()?.last_name }}
+            </h2>
+            <p class="text-white/30 text-sm">{{ profile()?.email }}</p>
+          </div>
+
+          <div class="flex gap-4 flex-shrink-0">
+            <div class="text-center px-4 py-3 bg-white/3 border border-white/5 rounded-xl">
+              <p class="text-[#D4AF37] font-black text-2xl">{{ orders()?.length }}</p>
+              <p class="text-white/30 text-xs mt-0.5">طلب</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent my-5"
+        ></div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          @for (
+            detail of [
+              { icon: 'fa-phone', label: 'الهاتف', value: profile()?.phone_number },
+              { icon: 'fa-location-dot', label: 'المنطقة', value: profile()?.area },
+              { icon: 'fa-city', label: 'المدينة', value: profile()?.city },
+              { icon: 'fa-envelope', label: 'البريد', value: profile()?.email },
+            ];
+            track detail.label
+          ) {
+            <div
+              class="bg-white/3 border border-white/5 rounded-xl p-3 hover:border-[#D4AF37]/15 transition-colors duration-200"
+            >
+              <div class="flex items-center gap-2 mb-1.5">
+                <i class="fa-solid {{ detail.icon }} text-[#D4AF37]/50 text-xs"></i>
+                <span class="text-white/30 text-[10px] tracking-widest uppercase">{{
+                  detail.label
+                }}</span>
+              </div>
+              <p class="text-white text-sm font-semibold truncate">{{ detail.value }}</p>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <h3 class="text-white font-black text-xl">طلباتي</h3>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/20 to-transparent"></div>
+          <span class="text-xs text-[#D4AF37]/50 tracking-widest">{{ orders()?.length }} طلب</span>
+        </div>
+
+        @if (orders()?.length === 0) {
+          <div class="flex flex-col items-center justify-center py-20 gap-3">
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center"
+              style="
+                background: rgba(212, 175, 55, 0.08);
+                border: 1px solid rgba(212, 175, 55, 0.15);
+              "
+            >
+              <i class="fa-solid fa-box-open text-2xl text-[#D4AF37]/40"></i>
+            </div>
+            <p class="text-white/30 font-semibold">لا توجد طلبات بعد</p>
+            <a
+              routerLink="/mobiles"
+              class="px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer mt-1"
+              style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+            >
+              تصفح المنتجات
+            </a>
+          </div>
+        }
+
+        @if (orders()?.length! > 0) {
+          <div class="flex flex-col gap-3">
+            @for (order of orders(); track order.id) {
+              <div
+                class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#D4AF37]/15 transition-colors duration-200 group"
+              >
+                <div class="flex items-center justify-between px-5 py-4 border-b border-white/5">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style="background: rgba(212, 175, 55, 0.1)"
+                    >
+                      <i class="fa-solid fa-box text-[#D4AF37] text-xs"></i>
+                    </div>
+                    <div>
+                      <p class="text-white font-bold text-sm">طلب #{{ order.id }}</p>
+                      <p class="text-white/30 text-xs">
+                        {{ order.created_at | date: 'dd/MM/yyyy' }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+                      [ngClass]="{
+                        'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20':
+                          order.payment_status === 'pending',
+                        'bg-green-500/10 text-green-400 border border-green-500/20':
+                          order.payment_status === 'confirmed',
+                        'bg-red-500/10 text-red-400 border border-red-500/20':
+                          order.payment_status === 'cancelled',
+                      }"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 rounded-full"
+                        [ngClass]="{
+                          'bg-yellow-400 animate-pulse': order.payment_status === 'pending',
+                          'bg-green-400': order.payment_status === 'confirmed',
+                          'bg-red-400': order.payment_status === 'cancelled',
+                        }"
+                      >
+                      </span>
+                      @if (order.payment_status === 'pending') {
+                        قيد الانتظار
+                      }
+                      @if (order.payment_status === 'confirmed') {
+                        تم التأكيد
+                      }
+                      @if (order.payment_status === 'cancelled') {
+                        ملغي
+                      }
+                    </span>
+                  </div>
+                </div>
+
+                <div class="px-5 py-4 flex flex-col gap-3">
+                  @for (item of order.items; track item.id) {
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-xl bg-[#111] flex items-center justify-center flex-shrink-0 overflow-hidden"
+                      >
+                        <img
+                          loading="lazy"
+                          [src]="'http://127.0.0.1:8000' + item.product.image_cover"
+                          [alt]="item.product.title"
+                          class="w-10 h-10 object-contain"
+                        />
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <p class="text-white text-sm font-semibold truncate">
+                          {{ item.product.title }}
+                        </p>
+                        <div class="flex items-center gap-2 mt-1">
+                          <span class="text-white/40 text-xs">اللون</span>
+
+                          <div
+                            class="w-4 h-4 rounded-full border border-white/20"
+                            [style.background]="item.color.hex_code"
+                          ></div>
+                        </div>
+                        <p class="text-white/30 text-xs">الكمية: {{ item.quantity }}</p>
+                      </div>
+                      <div class="flex items-baseline gap-1 flex-shrink-0">
+                        <span class="text-[#D4AF37] font-black text-sm">{{
+                          item.total_price
+                        }}</span>
+                        <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <div
+                  class="flex items-center justify-between px-5 py-3 border-t border-white/5 bg-white/2"
+                >
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-money-bill-wave text-[#D4AF37]/40 text-xs"></i>
+                    <span class="text-white/30 text-xs">الدفع عند الاستلام</span>
+                  </div>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-white/40 text-xs">الإجمالي:</span>
+                    <span class="text-[#D4AF37] font-black text-base">{{ order.total_price }}</span>
+                    <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4" dir="rtl">
+    <div
+      class="bg-white/3 border border-white/5 rounded-2xl p-10 text-center max-w-md w-full"
+      style="
+        box-shadow:
+          0 0 40px rgba(212, 175, 55, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      "
+    >
+      <div
+        class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
+        style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2)"
+      >
+        <i class="fa-solid fa-user-lock text-2xl text-[#D4AF37]"></i>
+      </div>
+
+      <h2 class="text-xl font-black mb-2">انتهت الجلسة</h2>
+      <p class="text-white/40 text-sm mb-6">
+        حدثت مشكلة في تحميل بيانات حسابك أو تم تسجيل خروجك تلقائياً. يرجى تسجيل الدخول مرة أخرى
+        للمتابعة.
+      </p>
+
+      <button
+        routerLink="/login"
+        class="px-6 py-3 rounded-xl text-sm font-bold w-full cursor-pointer"
+        style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+      >
+        تسجيل الدخول
+      </button>
+    </div>
+  </div>
+}
