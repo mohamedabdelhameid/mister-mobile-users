@@ -48,18 +48,22 @@ export class LoginComponent {
           this.authService.decodeUserData();
         }
 
-        setTimeout(() => {
-          location.href = '/home';
-        }, 3000);
+        location.href = '/home';
 
         this.toastr.success('تم تسجيل دخولك بنجاح', 'نجحت');
-        this.intializeLoginForm();
+        // this.intializeLoginForm();
+        this.loginForm.reset();
       },
       error: (err) => {
-        console.log(err.error);
-        const message = err.error?.error.includes('Invalid credentials')
-          ? 'الايميل او الباسورد غير صحيح'
-          : err.error;
+        let message = '';
+
+        if (err.error?.error.includes('Please verify your email before logging in.')) {
+          message = 'يرجى تفعيل حسابك قبل تسجيل الدخول';
+        } else if (err.error?.error.includes('Invalid credentials')) {
+          message = 'الايميل او الباسورد غير صحيح';
+        } else {
+          message = err.error.message;
+        }
 
         this.toastr.error(message, 'فشل');
       },

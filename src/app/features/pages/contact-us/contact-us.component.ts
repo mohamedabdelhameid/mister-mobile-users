@@ -46,7 +46,8 @@ export class ContactUsComponent {
               timeOut: 3000,
             });
 
-            this.initializeForm();
+            // this.initializeForm();
+            this.contactForm.reset();
             this.isLoading.set(false);
           },
           error: (err) => {

@@ -63,12 +63,19 @@ export class RegisterComponent {
     this.authSubscription = this.authService.addNewUser(this.registerForm.value).subscribe({
       next: (res) => {
         this.toastr.success('يرجى تأكيد حسابك عبر الايميل المرسل لكم.', 'نجحت');
-        this.intializeRegisterForm();
+        // this.intializeRegisterForm();
+        this.registerForm.reset();
       },
       error: (err) => {
-        const message = err.error?.includes('The email has already been taken')
-          ? 'الايميل مستخدم بالفعل'
-          : err.error;
+        console.log(err);
+
+        let message = '';
+        if (err.error?.includes('The email has already been taken')) {
+          message = 'الايميل مستخدم بالفعل';
+        } else {
+          message = err.error.message;
+        }
+
         this.toastr.error(message, 'فشل');
       },
     });

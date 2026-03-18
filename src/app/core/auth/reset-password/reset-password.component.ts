@@ -74,7 +74,8 @@ export class ResetPasswordComponent {
           'تم تغيير كلمة السر بنجاح سيتم توجيهك الى صفحة تسجيل الدخول بعد 3 من الثواني',
           'نجحت',
         );
-        this.intializeRegisterForm();
+        // this.intializeRegisterForm();
+        this.registerForm.reset();
 
         setTimeout(() => {
           this.router.navigate(['/login']);

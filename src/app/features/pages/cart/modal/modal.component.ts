@@ -54,7 +54,8 @@ export class ModalComponent {
           timeOut: 1000,
         });
         this.isCODLoading.set(false);
-        this.initializeForm();
+        // this.initializeForm();
+        this.checkoutForm.reset();
         this.close();
       },
       error: (err) => {
