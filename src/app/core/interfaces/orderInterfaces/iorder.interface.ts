@@ -61,3 +61,11 @@ export interface Color {
   name: string;
   hex_code: string;
 }
+
+export interface Slot {
+  number: number;
+  completed: boolean;
+  isReward: boolean;
+  icon: string;
+  label: string;
+}

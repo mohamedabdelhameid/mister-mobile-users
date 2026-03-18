@@ -8,10 +8,11 @@ import { OrderServices } from '../../../core/services/orderServices/order.servic
 import { IAllItems } from '../../../core/interfaces/cartItem/iall-items.interface';
 import { IOrder } from '../../../core/interfaces/orderInterfaces/iorder.interface';
 import { Subscription } from 'rxjs';
+import { RewardsComponent } from './rewards/rewards.component';
 
 @Component({
   selector: 'app-profile',
-  imports: [NgClass, DatePipe, RouterLink],
+  imports: [NgClass, DatePipe, RouterLink, RewardsComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })

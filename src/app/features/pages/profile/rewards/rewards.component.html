@@ -1,0 +1,182 @@
+<div
+  class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] flex items-center justify-center py-16 px-4"
+  dir="rtl"
+>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+    ></div>
+    <div
+      class="absolute bottom-[5%] left-[-5%] w-[400px] h-[400px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-lg">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-black text-white mb-2">
+        بطاقة <span class="text-[#D4AF37]">المكافآت</span>
+      </h1>
+      <p class="text-white/30 text-sm">اطلب واكسب — كل 12 طلب مليان مكافآت مميزة</p>
+    </div>
+
+    <div
+      class="relative bg-white/3 border border-white/8 rounded-3xl overflow-hidden"
+      style="
+        box-shadow:
+          0 0 80px rgba(212, 175, 55, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      "
+    >
+      <div
+        class="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style="
+          background-image:
+            linear-gradient(#d4af37 1px, transparent 1px),
+            linear-gradient(90deg, #d4af37 1px, transparent 1px);
+          background-size: 30px 30px;
+        "
+      ></div>
+
+      <div
+        class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm pointer-events-none"
+      ></div>
+
+      <div
+        class="relative z-10 flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/5"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center text-black font-black text-lg"
+            style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%)"
+          >
+            L
+          </div>
+          <div>
+            <p class="text-white font-black text-base leading-none">LUXA Store</p>
+            <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase">Loyalty Card</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="text-white/30 text-[10px] tracking-widest uppercase">طلباتك</p>
+          <p class="text-[#D4AF37] font-black text-2xl">
+            {{ completedOrders() }}<span class="text-white/20 text-base">/12</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="relative z-10 px-6 py-3 border-b border-white/5">
+        <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-700"
+            style="background: linear-gradient(to left, #f0cc5c, #d4af37)"
+            [style.width]="(completedOrders() / 12) * 100 + '%'"
+          ></div>
+        </div>
+      </div>
+
+      <div class="relative z-10 grid grid-cols-4 gap-3 p-6">
+        @for (slot of slots; track slot.number) {
+          <div
+            class="relative flex flex-col items-center gap-1.5 rounded-2xl p-3 border transition-all duration-300"
+            [ngClass]="{
+              'border-green-500/50 bg-green-500/8': slot.completed && !slot.isReward,
+              'border-green-500/60 bg-green-500/12': slot.isReward && slot.completed,
+              'border-white/8 bg-white/2': !slot.completed && !slot.isReward,
+              'border-[#D4AF37]/20 bg-[#D4AF37]/5': slot.isReward && !slot.completed,
+            }"
+          >
+            <span
+              class="text-[10px] font-black"
+              [ngClass]="{
+                'text-green-400': slot.completed,
+                'text-[#D4AF37]': slot.isReward && !slot.completed,
+                'text-white/20': !slot.completed && !slot.isReward,
+              }"
+            >
+              {{ slot.number }}
+            </span>
+
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center"
+              [ngClass]="{
+                'bg-green-500/20': slot.completed,
+                'bg-[#D4AF37]/10': slot.isReward && !slot.completed,
+                'bg-white/5': !slot.completed && !slot.isReward,
+              }"
+            >
+              @if (slot.completed) {
+                <i class="fa-solid fa-circle-check text-green-400 text-lg"></i>
+              } @else if (slot.isReward) {
+                <i [class]="slot.icon + ' text-[#D4AF37]/60 text-sm'"></i>
+              } @else {
+                <i class="fa-solid fa-mobile-screen text-white/15 text-sm"></i>
+              }
+            </div>
+
+            @if (slot.isReward) {
+              <span
+                class="text-[9px] text-center leading-tight font-semibold"
+                [ngClass]="slot.completed ? 'text-green-400' : 'text-[#D4AF37]/50'"
+              >
+                {{ slot.label }}
+              </span>
+            }
+
+            @if (slot.number === completedOrders() + 1 && !slot.completed) {
+              <div
+                class="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-[#0a0a0a] bg-[#D4AF37] animate-pulse"
+              ></div>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="relative z-10 border-t border-white/5 px-6 py-4 flex flex-col gap-3">
+        <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-1">المكافآت</p>
+        <div class="grid grid-cols-1 gap-2.5">
+          @for (reward of rewards; track reward.slot) {
+            <div
+              class="flex items-center gap-3 bg-white/3 border border-white/5 rounded-xl px-4 py-3 hover:border-[#D4AF37]/15 transition-colors duration-200"
+            >
+              <div
+                class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                style="background: rgba(212, 175, 55, 0.1)"
+              >
+                <i [class]="reward.icon + ' text-[#D4AF37] text-sm'"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-white text-sm font-bold">{{ reward.title }}</p>
+                <p class="text-white/30 text-xs">{{ reward.desc }}</p>
+              </div>
+              <div class="text-center flex-shrink-0">
+                <p class="text-[#D4AF37] font-black text-lg leading-none">{{ reward.slot }}</p>
+                <p class="text-white/20 text-[10px]">طلب</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-6 h-px"
+      style="
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+      "
+    ></div>
+    <p class="text-center text-white/20 text-xs mt-4">
+      تُحسب المكافآت تلقائياً مع كل طلب مكتمل — لا يشترط طلب مخصوص
+    </p>
+  </div>
+</div>
