@@ -42,7 +42,6 @@ export class ForgetPasswordComponent {
         console.log(res);
 
         this.toastr.success('تم إرسال رسالة التأكيد عبر الايميل', 'نجحت');
-        // this.intializeLoginForm();
         this.loginForm.reset();
       },
       error: (err) => {

@@ -60,7 +60,12 @@
         </div>
       </div>
 
-      <form [formGroup]="checkoutForm" class="px-6 pt-5 pb-6 flex flex-col gap-5" dir="rtl">
+      <form
+        [formGroup]="checkoutForm"
+        (ngSubmit)="CODPayment()"
+        class="px-6 pt-5 pb-6 flex flex-col gap-5"
+        dir="rtl"
+      >
         <div class="flex flex-col gap-1.5">
           <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
             >ملاحظات (اختياري)</label
@@ -86,8 +91,7 @@
           </button>
 
           <button
-            type="button"
-            (click)="CODPayment()"
+            type="submit"
             class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed"
             style="
               background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);

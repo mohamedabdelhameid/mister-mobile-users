@@ -51,7 +51,6 @@ export class LoginComponent {
         location.href = '/home';
 
         this.toastr.success('تم تسجيل دخولك بنجاح', 'نجحت');
-        // this.intializeLoginForm();
         this.loginForm.reset();
       },
       error: (err) => {

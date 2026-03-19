@@ -63,7 +63,6 @@ export class RegisterComponent {
     this.authSubscription = this.authService.addNewUser(this.registerForm.value).subscribe({
       next: (res) => {
         this.toastr.success('يرجى تأكيد حسابك عبر الايميل المرسل لكم.', 'نجحت');
-        // this.intializeRegisterForm();
         this.registerForm.reset();
       },
       error: (err) => {
