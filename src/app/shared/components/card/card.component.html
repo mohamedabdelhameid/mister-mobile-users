@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden w-full max-w-xs flex flex-col transition-all duration-300 hover:border-[#D4AF37]/25 group"
   style="box-shadow: 0 0 0 rgba(212, 175, 55, 0)"
 >
@@ -53,7 +53,7 @@
 
     <p class="text-white/30 text-xs">{{ item()?.storage }}</p>
 
-    <div class="flex items-center justify-between mt-auto pt-1">
+    <div class="flex items-center flex-col sm:flex-row justify-between mt-auto pt-1">
       <div class="flex items-baseline gap-1">
         <span class="text-[#D4AF37] font-black text-xl">{{ item()?.final_price }}</span>
         <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
@@ -68,6 +68,108 @@
         "
       >
         <span class="relative z-10 flex items-center gap-1.5"> عرض التفاصيل </span>
+        <div
+          class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
+          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+        ></div>
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<div
+  class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:border-[#D4AF37]/25 group w-full"
+>
+  <div
+    class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1"
+  >
+    <span
+      class="w-1.5 h-1.5 rounded-full animate-pulse"
+      [ngClass]="item()?.total_quantity! > 0 ? 'bg-[#D4AF37]' : 'bg-red-400'"
+    ></span>
+    <span
+      class="text-[10px] tracking-wide"
+      [ngClass]="item()?.total_quantity! > 0 ? 'text-[#D4AF37]' : 'text-red-400'"
+    >
+      {{ item()?.total_quantity! > 0 ? 'متاح' : 'غير متاح' }}
+    </span>
+  </div>
+
+  @if (item()?.discount && item()!.discount > 0) {
+    <div
+      class="absolute top-2.5 right-2.5 z-10 text-[10px] font-black px-2 py-1 rounded-full text-black"
+      style="background: #d4af37"
+    >
+      -{{ item()?.discount }}%
+    </div>
+  }
+
+  <div
+    class="relative bg-[#111] flex items-center justify-center cursor-pointer overflow-hidden"
+    style="aspect-ratio: 1/1"
+    (click)="router.navigate(['mobiles', item()?.id])"
+  >
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+    ></div>
+    <img
+      loading="lazy"
+      [src]="'http://127.0.0.1:8000' + item()?.image_cover"
+      [alt]="item()?.title"
+      class="w-3/4 h-3/4 object-contain transition-transform duration-500 group-hover:scale-105"
+    />
+    <div
+      class="absolute top-2 right-2 w-3 h-3 border-t border-r border-[#D4AF37]/15 rounded-tr-sm group-hover:border-[#D4AF37]/40 transition-colors duration-300"
+    ></div>
+    <div
+      class="absolute top-2 left-2 w-3 h-3 border-t border-l border-[#D4AF37]/15 rounded-tl-sm group-hover:border-[#D4AF37]/40 transition-colors duration-300"
+    ></div>
+    <div
+      class="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-[#D4AF37]/15 rounded-br-sm group-hover:border-[#D4AF37]/40 transition-colors duration-300"
+    ></div>
+    <div
+      class="absolute bottom-2 left-2 w-3 h-3 border-b border-l border-[#D4AF37]/15 rounded-bl-sm group-hover:border-[#D4AF37]/40 transition-colors duration-300"
+    ></div>
+  </div>
+
+  <div class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/10 to-transparent"></div>
+
+  <div class="p-3 flex flex-col gap-1.5 flex-1">
+    <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase truncate">
+      {{ item()?.brand?.name }}
+    </p>
+
+    <h2
+      class="text-white font-bold text-sm leading-snug line-clamp-2 cursor-pointer group-hover:text-[#D4AF37] transition-colors duration-200"
+      (click)="router.navigate(['mobiles', item()?.id])"
+    >
+      {{ item()?.title }}
+    </h2>
+
+    <p class="text-white/25 text-[10px]">{{ item()?.storage }}</p>
+
+    <div class="flex items-center justify-between flex-col sm:flex-row mt-auto pt-1.5 gap-2">
+      <div class="flex flex-col min-w-0 flex-shrink-0">
+        @if (item()?.discount && item()!.discount > 0) {
+          <span class="text-white/20 line-through text-[10px]">{{ item()?.price }} ج.م</span>
+        }
+        <div class="flex items-baseline gap-0.5">
+          <span class="text-[#D4AF37] font-black text-base leading-none">{{
+            item()?.final_price
+          }}</span>
+          <span class="text-[#D4AF37]/50 text-[10px]">ج.م</span>
+        </div>
+      </div>
+
+      <button
+        (click)="router.navigate(['mobiles', item()?.id])"
+        class="relative flex-shrink-0 flex items-center justify-center px-3 py-2 rounded-xl font-bold text-[11px] overflow-hidden cursor-pointer group/btn"
+        style="
+          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+          color: #0a0a0a;
+        "
+      >
+        <span class="relative z-10 whitespace-nowrap">عرض التفاصيل</span>
         <div
           class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
           style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"

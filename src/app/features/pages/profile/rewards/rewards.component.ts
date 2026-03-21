@@ -15,15 +15,15 @@ export class RewardsComponent {
   completedOrders: WritableSignal<number> = signal(0);
 
   rewards = [
-    { slot: 5, icon: 'fa-solid fa-percent', title: 'خصم خاص', desc: 'خصم مميز على طلبك الخامس' },
+    { slot: 2, icon: 'fa-solid fa-percent', title: 'خصم خاص', desc: 'خصم مميز على طلبك الخامس' },
     {
-      slot: 9,
+      slot: 4,
       icon: 'fa-solid fa-truck',
       title: 'توصيل مجاني',
       desc: 'توصيل مجاني على طلبك التاسع',
     },
     {
-      slot: 12,
+      slot: 6,
       icon: 'fa-solid fa-gift',
       title: 'هدية مجانية',
       desc: 'هدية مفاجأة مع طلبك الثاني عشر',
@@ -31,9 +31,9 @@ export class RewardsComponent {
   ];
 
   private rewardSlots: Record<number, { icon: string; label: string }> = {
-    5: { icon: 'fa-solid fa-percent', label: 'خصم' },
-    9: { icon: 'fa-solid fa-truck', label: 'توصيل مجاني' },
-    12: { icon: 'fa-solid fa-gift', label: 'هدية' },
+    2: { icon: 'fa-solid fa-percent', label: 'خصم' },
+    4: { icon: 'fa-solid fa-truck', label: 'توصيل مجاني' },
+    6: { icon: 'fa-solid fa-gift', label: 'هدية' },
   };
 
   slots: Slot[] = [];
@@ -43,7 +43,7 @@ export class RewardsComponent {
   }
 
   buildSlots() {
-    this.slots = Array.from({ length: 12 }, (_, i) => {
+    this.slots = Array.from({ length: 6 }, (_, i) => {
       const number = i + 1;
       const reward = this.rewardSlots[number];
       return {

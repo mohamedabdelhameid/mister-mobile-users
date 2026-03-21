@@ -56,7 +56,7 @@ export class MobilesComponent {
         items: 6,
       },
       940: {
-        items: 8,
+        items: 10,
       },
     },
   };

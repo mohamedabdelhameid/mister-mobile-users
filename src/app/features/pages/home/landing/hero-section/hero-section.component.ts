@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-section',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './hero-section.component.css',
 })
 export class HeroSectionComponent {
+  readonly router = inject(Router);
   onWhatsAppOrder(): void {
     const phone = '201120203912';
     const message = encodeURIComponent('مرحباً، حابب أطلب موبايل لو سمحت. ممكن أعرف التفاصيل؟');

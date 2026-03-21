@@ -1,217 +1,204 @@
-<nav class="bg-neutral-950 fixed w-full z-20 top-0 start-0 border-b border-neutral-800">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
-    <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img loading="lazy" src="./logo-removedbg.png" class="h-15" alt="Flowbite Logo" />
-      <span class="self-center text-xl font-bold whitespace-nowrap text-yellow-500"> LUXA </span>
+<nav
+  class="bg-[#0a0a0a] fixed w-full z-20 top-0 start-0 border-b border-white/5 font-['Tajawal',sans-serif]"
+  dir="rtl"
+>
+  <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3">
+    <a routerLink="/" class="flex items-center gap-2">
+      <img loading="lazy" src="./logo-removedbg.png" class="h-10" alt="LUXA Logo" />
+      <span class="text-xl font-black text-[#D4AF37]">LUXA</span>
     </a>
 
-    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        @if (isLoggedIn() === false) {
-          <div>
-            <a routerLink="/register">
-              <i class="fa-solid fa-arrow-right-to-bracket text-yellow-500"></i>
-            </a>
-          </div>
+    <ul class="hidden md:flex items-center gap-1">
+      <li>
+        <a
+          routerLink="/home"
+          routerLinkActive="!text-[#D4AF37]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          الرئيسية
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/about"
+          routerLinkActive="!text-[#D4AF37]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          عن LUXA
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/mobiles"
+          routerLinkActive="!text-[#D4AF37]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          متجرنا
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/search-mobiles"
+          routerLinkActive="!text-[#D4AF37]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          بحث عن هاتف
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/contact-us"
+          routerLinkActive="!text-[#D4AF37]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          تواصل معنا
+        </a>
+      </li>
+    </ul>
 
-          <div
-            class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
-            id="user-dropdown"
-          >
-            <ul class="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
-              @if (isLoggedIn() === true) {
-                <li>
-                  <a
-                    routerLink="/profile"
-                    routerLinkActive="activeLink"
-                    class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                    >حسابي</a
-                  >
-                </li>
-              }
-              <li class="flex items-center justify-between relative">
-                <a
-                  routerLink="/cart"
-                  routerLinkActive="activeLink"
-                  class="inline-flex items-center p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                  >قائمة المشتريات</a
-                >
-              </li>
+    <div class="flex items-center gap-2">
+      @if (!isLoggedIn()) {
+        <a
+          routerLink="/login"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white/50 border border-white/8 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
+        >
+          <i class="fa-solid fa-arrow-right-to-bracket text-sm"></i>
+          <span class="hidden sm:inline">تسجيل دخول</span>
+        </a>
+      }
 
-              <li>
-                <a
-                  class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-red-800 cursor-pointer rounded"
-                  (click)="signOut()"
-                  >تسجيل خروج</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <button
-            data-collapse-toggle="navbar-user"
-            type="button"
-            class="inline-flex cursor-pointer items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-            aria-controls="navbar-user"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
+      @if (isLoggedIn()) {
+        <a
+          routerLink="/cart"
+          class="relative flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
+        >
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          @if (countCart() > 0) {
+            <span
+              class="absolute -top-1.5 -left-1.5 w-4 h-4 flex items-center justify-center text-[9px] font-black text-black rounded-full"
+              style="background: #d4af37"
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-width="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
-            </svg>
-          </button>
-        } @else {
-          <button
-            type="button"
-            class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary cursor-pointer"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="user-dropdown"
-            data-dropdown-placement="bottom"
-          >
-            <span class="sr-only">Open user menu</span>
-            <img
-              loading="lazy"
-              class="w-8 h-8 rounded-full"
-              src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              alt="user photo"
-            />
-          </button>
-          <div
-            class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
-            id="user-dropdown"
-          >
-            <ul class="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
-              @if (isLoggedIn() === true) {
-                <li>
-                  <a
-                    routerLink="/profile"
-                    routerLinkActive="activeLink"
-                    class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                    >حسابي</a
-                  >
-                </li>
-              }
-              <li class="flex items-center justify-between relative">
-                <a
-                  routerLink="/cart"
-                  routerLinkActive="activeLink"
-                  class="inline-flex w-full items-center p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                  >قائمة المشتريات</a
-                >
-                @if (countCart() > 0) {
-                  <div
-                    class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-white bg-blue-600 rounded-full"
-                  >
-                    {{ countCart() || 0 }}
-                  </div>
-                }
-              </li>
+              {{ countCart() }}
+            </span>
+          }
+        </a>
 
-              <li>
-                <a
-                  class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-red-800 cursor-pointer rounded"
-                  (click)="signOut()"
-                  >تسجيل خروج</a
-                >
-              </li>
-            </ul>
-          </div>
+        <div class="relative">
           <button
-            data-collapse-toggle="navbar-user"
-            id="navbar-user"
             type="button"
-            class="inline-flex cursor-pointer items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-            aria-controls="navbar-user"
-            aria-expanded="false"
+            (click)="toggleDropdown()"
+            class="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/8 hover:border-[#D4AF37]/30 transition-all duration-200 cursor-pointer"
           >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
+            <div
+              class="w-7 h-7 rounded-lg flex items-center justify-center text-black font-black text-xs"
+              style="background: linear-gradient(135deg, #d4af37, #f0cc5c)"
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-width="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
-            </svg>
+              <i class="fa-solid fa-user text-xs"></i>
+            </div>
+            <i
+              class="fa-solid fa-chevron-down text-white/30 text-[10px] transition-transform duration-200"
+              [class.rotate-180]="isDropdownOpen"
+            ></i>
           </button>
-        }
-      </div>
-    </div>
 
-    <div class="w-full md:flex md:w-auto md:order-1" [class.hidden]="!isMenuOpen" id="navbar-links">
-      <ul
-        class="flex flex-col font-medium p-4 md:p-0 mt-4 md:mt-0 border border-neutral-800 rounded-lg bg-neutral-900 md:flex-row md:space-x-1 md:border-0 md:bg-transparent rtl:space-x-reverse"
+          @if (isDropdownOpen) {
+            <div
+              class="absolute left-0 mt-2 w-48 bg-[#0f0f0f] border border-white/8 rounded-2xl overflow-hidden z-50"
+              style="box-shadow: 0 0 40px rgba(0, 0, 0, 0.5)"
+            >
+              <div class="p-1.5 flex flex-col gap-0.5">
+                <a
+                  routerLink="/profile"
+                  routerLinkActive="bg-[#D4AF37]/8 text-[#D4AF37]"
+                  (click)="isDropdownOpen = false"
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:bg-white/5 hover:text-white transition-all duration-150 cursor-pointer"
+                >
+                  <i class="fa-solid fa-user text-xs text-[#D4AF37]/50 w-4"></i>
+                  حسابي
+                </a>
+
+                <div class="h-px bg-white/5 my-1"></div>
+
+                <button
+                  (click)="signOut()"
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-400/60 hover:bg-red-500/8 hover:text-red-400 transition-all duration-150 cursor-pointer w-full text-right"
+                >
+                  <i class="fa-solid fa-arrow-right-from-bracket text-xs w-4"></i>
+                  تسجيل خروج
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <button
+        type="button"
+        (click)="toggleMenu()"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl border border-white/8 text-white/40 hover:border-[#D4AF37]/30 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
       >
+        <i
+          class="text-sm transition-all duration-200"
+          [ngClass]="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
+        ></i>
+      </button>
+    </div>
+  </div>
+
+  @if (isMenuOpen) {
+    <div class="md:hidden border-t border-white/5 bg-[#0a0a0a] px-4 py-3" dir="rtl">
+      <ul class="flex flex-col gap-1">
         <li>
           <a
             routerLink="/home"
-            routerLinkActive="activeLink"
-            aria-current="page"
-            class="block py-2 px-3 rounded-md text-neutral-300 md:bg-transparent md:p-2 md:hover:text-yellow-400 transition-colors duration-150"
+            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            الرئيسية
+            <i class="fa-solid fa-house text-xs text-[#D4AF37]/40 w-4"></i>الرئيسية
           </a>
         </li>
-
         <li>
           <a
             routerLink="/about"
-            routerLinkActive="activeLink"
-            class="block py-2 px-3 rounded-md text-neutral-300 hover:bg-neutral-800 hover:text-yellow-400 md:hover:bg-transparent md:p-2 transition-colors duration-150"
+            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            عنLUXA
+            <i class="fa-solid fa-circle-info text-xs text-[#D4AF37]/40 w-4"></i>عن LUXA
           </a>
         </li>
         <li>
           <a
             routerLink="/mobiles"
-            routerLinkActive="activeLink"
-            class="block py-2 px-3 rounded-md text-neutral-300 hover:bg-neutral-800 hover:text-yellow-400 md:hover:bg-transparent md:p-2 transition-colors duration-150"
+            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            متجرنا
+            <i class="fa-solid fa-mobile-screen text-xs text-[#D4AF37]/40 w-4"></i>متجرنا
           </a>
         </li>
         <li>
           <a
             routerLink="/search-mobiles"
-            routerLinkActive="activeLink"
-            class="block py-2 px-3 rounded-md text-neutral-300 hover:bg-neutral-800 hover:text-yellow-400 md:hover:bg-transparent md:p-2 transition-colors duration-150"
+            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            بحث عن هاتف
+            <i class="fa-solid fa-magnifying-glass text-xs text-[#D4AF37]/40 w-4"></i>بحث عن هاتف
           </a>
         </li>
         <li>
           <a
             routerLink="/contact-us"
-            routerLinkActive="activeLink"
-            class="block py-2 px-3 rounded-md text-neutral-300 hover:bg-neutral-800 hover:text-yellow-400 md:hover:bg-transparent md:p-2 transition-colors duration-150"
+            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            تواصل معنا
+            <i class="fa-solid fa-envelope text-xs text-[#D4AF37]/40 w-4"></i>تواصل معنا
           </a>
         </li>
       </ul>
     </div>
-  </div>
+  }
 </nav>
