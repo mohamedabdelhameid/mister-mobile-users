@@ -126,6 +126,10 @@
                   contactForm.get('email')?.errors?.['required']
                 ) {
                   <p class="text-red-500 text-xs">البريد مطلوب</p>
+                } @else if (
+                  contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']
+                ) {
+                  <p class="text-red-500 text-xs">البريد غير صحيح</p>
                 }
               </div>
             </div>
@@ -143,6 +147,11 @@
                 contactForm.get('message')?.errors?.['required']
               ) {
                 <p class="text-red-500 text-xs">محتوى الرسالة مطلوب</p>
+              } @else if (
+                contactForm.get('message')?.touched &&
+                contactForm.get('message')?.errors?.['minlength']
+              ) {
+                <p class="text-red-500 text-xs">محتوى الرسالة يجب أن يكون 5 أحرف على الأقل</p>
               }
             </div>
 
