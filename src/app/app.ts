@@ -24,5 +24,5 @@ export class App {
     }
   }
 
-  protected readonly title = signal('LUXA');
+  protected readonly title = signal('mister-mobile');
 }

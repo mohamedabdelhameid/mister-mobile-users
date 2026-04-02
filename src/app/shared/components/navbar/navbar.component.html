@@ -4,15 +4,15 @@
 >
   <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3">
     <a routerLink="/" class="flex items-center gap-2">
-      <img loading="lazy" src="./logo-removedbg.png" class="h-10" alt="LUXA Logo" />
-      <span class="text-xl font-black text-[#D4AF37]">LUXA</span>
+      <img loading="lazy" src="./mobileLogo.png" class="h-10" alt="Mister Mobile Logo" />
+      <span class="text-xl font-black text-[#82c04f]">مستر موبايل</span>
     </a>
 
     <ul class="hidden md:flex items-center gap-1">
       <li>
         <a
           routerLink="/home"
-          routerLinkActive="!text-[#D4AF37]"
+          routerLinkActive="!text-[#82c04f]"
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
           الرئيسية
@@ -21,16 +21,16 @@
       <li>
         <a
           routerLink="/about"
-          routerLinkActive="!text-[#D4AF37]"
+          routerLinkActive="!text-[#82c04f]"
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
-          عن LUXA
+          عن مستر موبايل
         </a>
       </li>
       <li>
         <a
           routerLink="/mobiles"
-          routerLinkActive="!text-[#D4AF37]"
+          routerLinkActive="!text-[#82c04f]"
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
           متجرنا
@@ -39,7 +39,7 @@
       <li>
         <a
           routerLink="/search-mobiles"
-          routerLinkActive="!text-[#D4AF37]"
+          routerLinkActive="!text-[#82c04f]"
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
           بحث عن هاتف
@@ -48,7 +48,7 @@
       <li>
         <a
           routerLink="/contact-us"
-          routerLinkActive="!text-[#D4AF37]"
+          routerLinkActive="!text-[#82c04f]"
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
           تواصل معنا
@@ -60,7 +60,7 @@
       @if (!isLoggedIn()) {
         <a
           routerLink="/login"
-          class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white/50 border border-white/8 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white/50 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200 cursor-pointer"
         >
           <i class="fa-solid fa-arrow-right-to-bracket text-sm"></i>
           <span class="hidden sm:inline">تسجيل دخول</span>
@@ -70,13 +70,13 @@
       @if (isLoggedIn()) {
         <a
           routerLink="/cart"
-          class="relative flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
+          class="relative flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200 cursor-pointer"
         >
           <i class="fa-solid fa-cart-shopping text-sm"></i>
           @if (countCart() > 0) {
             <span
               class="absolute -top-1.5 -left-1.5 w-4 h-4 flex items-center justify-center text-[9px] font-black text-black rounded-full"
-              style="background: #d4af37"
+              style="background: #82c04f"
             >
               {{ countCart() }}
             </span>
@@ -87,11 +87,11 @@
           <button
             type="button"
             (click)="toggleDropdown()"
-            class="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/8 hover:border-[#D4AF37]/30 transition-all duration-200 cursor-pointer"
+            class="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/8 hover:border-[#82c04f]/30 transition-all duration-200 cursor-pointer"
           >
             <div
               class="w-7 h-7 rounded-lg flex items-center justify-center text-black font-black text-xs"
-              style="background: linear-gradient(135deg, #d4af37, #f0cc5c)"
+              style="background: linear-gradient(135deg, #82c04f, #8ed256)"
             >
               <i class="fa-solid fa-user text-xs"></i>
             </div>
@@ -109,11 +109,11 @@
               <div class="p-1.5 flex flex-col gap-0.5">
                 <a
                   routerLink="/profile"
-                  routerLinkActive="bg-[#D4AF37]/8 text-[#D4AF37]"
+                  routerLinkActive="bg-[#82c04f]/8 text-[#82c04f]"
                   (click)="isDropdownOpen = false"
                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:bg-white/5 hover:text-white transition-all duration-150 cursor-pointer"
                 >
-                  <i class="fa-solid fa-user text-xs text-[#D4AF37]/50 w-4"></i>
+                  <i class="fa-solid fa-user text-xs text-[#82c04f]/50 w-4"></i>
                   حسابي
                 </a>
 
@@ -135,7 +135,7 @@
       <button
         type="button"
         (click)="toggleMenu()"
-        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl border border-white/8 text-white/40 hover:border-[#D4AF37]/30 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl border border-white/8 text-white/40 hover:border-[#82c04f]/30 hover:text-[#82c04f] transition-all duration-200 cursor-pointer"
       >
         <i
           class="text-sm transition-all duration-200"
@@ -151,51 +151,51 @@
         <li>
           <a
             routerLink="/home"
-            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
             (click)="isMenuOpen = false"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            <i class="fa-solid fa-house text-xs text-[#D4AF37]/40 w-4"></i>الرئيسية
+            <i class="fa-solid fa-house text-xs text-[#82c04f]/40 w-4"></i>الرئيسية
           </a>
         </li>
         <li>
           <a
             routerLink="/about"
-            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
             (click)="isMenuOpen = false"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            <i class="fa-solid fa-circle-info text-xs text-[#D4AF37]/40 w-4"></i>عن LUXA
+            <i class="fa-solid fa-circle-info text-xs text-[#82c04f]/40 w-4"></i>عن مستر موبايل
           </a>
         </li>
         <li>
           <a
             routerLink="/mobiles"
-            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
             (click)="isMenuOpen = false"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            <i class="fa-solid fa-mobile-screen text-xs text-[#D4AF37]/40 w-4"></i>متجرنا
+            <i class="fa-solid fa-mobile-screen text-xs text-[#82c04f]/40 w-4"></i>متجرنا
           </a>
         </li>
         <li>
           <a
             routerLink="/search-mobiles"
-            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
             (click)="isMenuOpen = false"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            <i class="fa-solid fa-magnifying-glass text-xs text-[#D4AF37]/40 w-4"></i>بحث عن هاتف
+            <i class="fa-solid fa-magnifying-glass text-xs text-[#82c04f]/40 w-4"></i>بحث عن هاتف
           </a>
         </li>
         <li>
           <a
             routerLink="/contact-us"
-            routerLinkActive="text-[#D4AF37] bg-[#D4AF37]/5"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
             (click)="isMenuOpen = false"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
-            <i class="fa-solid fa-envelope text-xs text-[#D4AF37]/40 w-4"></i>تواصل معنا
+            <i class="fa-solid fa-envelope text-xs text-[#82c04f]/40 w-4"></i>تواصل معنا
           </a>
         </li>
       </ul>

@@ -18,7 +18,7 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () =>
       import('./features/pages/about/about.component').then((m) => m.AboutComponent),
-    title: 'عن LUXA',
+    title: 'عن مستر موبايل',
   },
   {
     path: 'mobiles',

@@ -1,32 +1,25 @@
-<section class="w-full text-white">
+<section class="w-full">
   <div class="container mx-auto px-4 py-10 md:py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
       <div class="relative flex justify-center">
         <img
-          src="./bannarLUXA.png"
-          alt="LUXA store design"
+          src="./mobileBaner.png"
+          alt="Mister Mobile store design"
           class="w-full max-w-md md:max-w-lg object-contain"
           loading="lazy"
           fetchpriority="high"
         />
-
-        <div
-          class="absolute bottom-0 translate-y-1/2 md:translate-y-1/3 left-1/2 -translate-x-1/2 md:left-0 md:-translate-x-1/8 bg-neutral-900 border border-neutral-700 rounded-xl px-6 py-4 shadow-xl text-center md:text-right w-65 sm:w-auto"
-        >
-          <p class="text-yellow-500 font-extrabold text-xl sm:text-2xl">توصيل في اليوم التالي</p>
-          <p class="font-semibold text-lg sm:text-xl mt-1">سوهاج ، أسيوط</p>
-        </div>
       </div>
 
-      <div class="space-y-6 text-center md:text-right mt-5">
+      <div class="space-y-6 text-center text-white md:text-right mt-5">
         <span
-          class="inline-block border-2 border-yellow-500 px-5 py-1.5 rounded-full text-sm font-semibold"
+          class="inline-block border-2 border-green-500 px-5 py-1.5 rounded-full text-sm font-semibold"
         >
           حصرياً في مصر
         </span>
 
         <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight">
-          فخامة <span class="text-yellow-500">تثق فيها</span>
+          اسم <span class="text-green-500">له تاريخ</span>
         </h2>
 
         <p class="text-neutral-300 max-w-lg mx-auto md:mx-0">
@@ -36,14 +29,14 @@
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
           <button
             (click)="router.navigate(['mobiles'])"
-            class="flex cursor-pointer items-center justify-center gap-2 bg-yellow-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-yellow-400 active:scale-95 transition"
+            class="flex cursor-pointer items-center justify-center gap-2 bg-green-500 text-black font-semibold px-6 py-3 rounded-lg hover:bg-green-400 active:scale-95 transition"
           >
             تسوق الآن
             <i class="fa-solid fa-arrow-left-long"></i>
           </button>
 
           <button
-            class="flex cursor-pointer items-center justify-center gap-2 border border-neutral-600 px-6 py-3 rounded-lg hover:border-yellow-500 hover:text-yellow-400 transition"
+            class="flex cursor-pointer items-center justify-center gap-2 border border-neutral-600 px-6 py-3 rounded-lg hover:border-green-500 hover:text-green-400 transition"
             (click)="onWhatsAppOrder()"
           >
             <svg

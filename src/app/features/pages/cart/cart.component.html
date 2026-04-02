@@ -12,17 +12,19 @@
 
     <div class="relative z-10 max-w-4xl mx-auto">
       <div class="flex items-center gap-3 mb-6">
-        <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
-        <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60">LUXA Store</span>
-        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+        <div class="flex-1 h-px bg-gradient-to-l from-[#82c04f]/30 to-transparent"></div>
+        <span class="text-xs tracking-[0.3em] uppercase text-[#82c04f] opacity-60"
+          >Mister Mobile Store</span
+        >
+        <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/30 to-transparent"></div>
       </div>
 
       <div class="mb-8">
         <h1 class="text-4xl font-black text-white mb-1">
-          سلة <span class="text-[#D4AF37]">الشراء</span>
+          سلة <span class="text-[#82c04f]">الشراء</span>
         </h1>
         <p class="text-white/30 text-sm">
-          <span class="text-[#D4AF37] font-bold">{{ cartItems()?.items?.length }}</span> منتج في
+          <span class="text-[#82c04f] font-bold">{{ cartItems()?.items?.length }}</span> منتج في
           السلة
         </p>
       </div>
@@ -33,7 +35,7 @@
             class="w-20 h-20 rounded-2xl flex items-center justify-center mb-2"
             style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
           >
-            <i class="fa-solid fa-cart-shopping text-3xl text-[#D4AF37]/40"></i>
+            <i class="fa-solid fa-cart-shopping text-3xl text-[#82c04f]/40"></i>
           </div>
           <p class="text-white/30 text-lg font-semibold">السلة فارغة</p>
           <p class="text-white/20 text-sm">أضف بعض المنتجات للبدء</p>
@@ -41,7 +43,7 @@
             routerLink="/mobiles"
             class="mt-2 px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
             style="
-              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
               color: #0a0a0a;
             "
           >
@@ -55,7 +57,7 @@
           <div class="lg:col-span-2 flex flex-col gap-3">
             @for (item of cartItems()?.items; track item.id) {
               <div
-                class="group relative flex items-center gap-4 bg-white/3 border border-white/5 rounded-2xl p-4 hover:border-[#D4AF37]/20 transition-colors duration-200"
+                class="group relative flex items-center gap-4 bg-white/3 border border-white/5 rounded-2xl p-4 hover:border-[#82c04f]/20 transition-colors duration-200"
               >
                 <div
                   class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-[#111] flex items-center justify-center"
@@ -86,8 +88,8 @@
                     <button
                       (click)="updatedQuantity(item.id, { quantity: item.quantity - 1 })"
                       class="w-7 h-7 rounded-lg flex items-center cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 justify-center bg-white/5 border border-white/10 text-white/40 transition-all duration-200 font-bold"
-                      [class.hover:border-[#D4AF37]/40]="item.quantity > 1"
-                      [class.hover:text-[#D4AF37]]="item.quantity > 1"
+                      [class.hover:border-[#82c04f]/40]="item.quantity > 1"
+                      [class.hover:text-[#82c04f]]="item.quantity > 1"
                       [disabled]="item.quantity === 1"
                     >
                       −
@@ -97,7 +99,7 @@
                     }}</span>
                     <button
                       (click)="updatedQuantity(item.id, { quantity: item.quantity + 1 })"
-                      class="w-7 h-7 rounded-lg flex items-center cursor-pointer justify-center bg-white/5 border border-white/10 text-white/40 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-200 cursor-pointer font-bold"
+                      class="w-7 h-7 rounded-lg flex items-center cursor-pointer justify-center bg-white/5 border border-white/10 text-white/40 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200 cursor-pointer font-bold"
                     >
                       +
                     </button>
@@ -112,10 +114,10 @@
                     <i class="fa-solid fa-trash-can text-xs"></i>
                   </button>
                   <div class="flex items-baseline gap-1">
-                    <span class="text-[#D4AF37] font-black text-base">{{
+                    <span class="text-[#82c04f] font-black text-base">{{
                       +item.price * item.quantity
                     }}</span>
-                    <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                    <span class="text-[#82c04f]/50 text-xs">ج.م</span>
                   </div>
                 </div>
               </div>
@@ -133,22 +135,22 @@
           <div class="lg:col-span-1">
             <div
               class="relative bg-white/3 border border-white/5 rounded-2xl p-6 sticky top-6"
-              style="box-shadow: 0 0 40px rgba(212, 175, 55, 0.05)"
+              style="box-shadow: 0 0 40px rgba(130, 192, 79, 0.05)"
             >
               <div
-                class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+                class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#82c04f]/25 rounded-tr-sm pointer-events-none"
               ></div>
               <div
-                class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+                class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#82c04f]/25 rounded-tl-sm pointer-events-none"
               ></div>
               <div
-                class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+                class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#82c04f]/25 rounded-br-sm pointer-events-none"
               ></div>
               <div
-                class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+                class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#82c04f]/25 rounded-bl-sm pointer-events-none"
               ></div>
 
-              <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-4">ملخص الطلب</p>
+              <p class="text-[#82c04f]/50 text-[10px] tracking-widest uppercase mb-4">ملخص الطلب</p>
 
               <div class="flex flex-col gap-3 mb-4">
                 <div class="flex items-center justify-between">
@@ -168,21 +170,21 @@
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-white/40 text-sm">الشحن</span>
-                  <span class="text-[#D4AF37] text-sm font-semibold">عند الاستلام</span>
+                  <span class="text-[#82c04f] text-sm font-semibold">عند الاستلام</span>
                 </div>
               </div>
 
               <div
-                class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent mb-4"
+                class="h-px bg-gradient-to-r from-transparent via-[#82c04f]/20 to-transparent mb-4"
               ></div>
 
               <div class="flex items-center justify-between mb-6">
                 <span class="text-white font-bold">الإجمالي</span>
                 <div class="flex items-baseline gap-1">
-                  <span class="text-[#D4AF37] font-black text-2xl">{{
+                  <span class="text-[#82c04f] font-black text-2xl">{{
                     cartItems()?.total_price
                   }}</span>
-                  <span class="text-[#D4AF37]/60 text-sm">ج.م</span>
+                  <span class="text-[#82c04f]/60 text-sm">ج.م</span>
                 </div>
               </div>
 
@@ -190,7 +192,7 @@
                 (click)="openModal()"
                 class="relative w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
                 style="
-                  background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                  background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
                   color: #0a0a0a;
                 "
               >
@@ -202,7 +204,7 @@
                 </span>
                 <div
                   class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                  style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
                 ></div>
               </button>
 
@@ -210,7 +212,7 @@
 
               <a
                 routerLink="/mobiles"
-                class="flex items-center justify-center gap-2 mt-3 text-white/30 hover:text-[#D4AF37] text-sm transition-colors duration-200 cursor-pointer"
+                class="flex items-center justify-center gap-2 mt-3 text-white/30 hover:text-[#82c04f] text-sm transition-colors duration-200 cursor-pointer"
               >
                 <i class="fa-solid fa-arrow-right text-xs"></i>
                 متابعة التسوق
@@ -227,7 +229,7 @@
       class="w-20 h-20 rounded-2xl flex items-center justify-center mb-2"
       style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
     >
-      <i class="fa-solid fa-cart-shopping text-3xl text-[#D4AF37]/40"></i>
+      <i class="fa-solid fa-cart-shopping text-3xl text-[#82c04f]/40"></i>
     </div>
     <p class="text-white/30 text-lg font-semibold">السلة فارغة</p>
     <p class="text-white/20 text-sm">أضف بعض المنتجات للبدء</p>
@@ -235,7 +237,7 @@
       routerLink="/mobiles"
       class="mt-2 px-6 py-3 rounded-xl text-sm font-bold cursor-pointer transition-all duration-200"
       style="
-        background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+        background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
         color: #0a0a0a;
       "
     >

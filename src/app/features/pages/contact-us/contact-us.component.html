@@ -2,7 +2,7 @@
   <div class="fixed my-10 inset-0 pointer-events-none z-0 overflow-hidden">
     <div
       class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full"
-      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+      style="background: radial-gradient(circle, rgba(130, 192, 79, 0.07) 0%, transparent 70%)"
     ></div>
     <div
       class="absolute bottom-[0%] right-[-5%] w-[400px] h-[400px] rounded-full"
@@ -12,14 +12,14 @@
 
   <div class="relative my-10 z-10 max-w-5xl mx-auto">
     <div class="flex items-center gap-3 mb-4">
-      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
-      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-70">تواصل معنا</span>
-      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-l from-[#82c04f]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#82c04f] opacity-70">تواصل معنا</span>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/30 to-transparent"></div>
     </div>
 
     <div class="text-center mb-14">
       <h1 class="text-5xl font-black text-white leading-tight tracking-tight mb-3">
-        نحن هنا <span class="text-[#D4AF37]">لمساعدتك</span>
+        نحن هنا <span class="text-[#82c04f]">لمساعدتك</span>
       </h1>
       <p class="text-white/40 text-base max-w-md mx-auto leading-relaxed">
         هل لديك استفسار أو مقترح؟ تواصل معنا وسنرد عليك في أقرب وقت ممكن.
@@ -38,7 +38,7 @@
           track item.label
         ) {
           <div
-            class="flex items-start gap-4 bg-white/3 border border-white/5 hover:border-[#D4AF37]/20 rounded-2xl p-4 transition-colors duration-200"
+            class="flex items-start gap-4 bg-white/3 border border-white/5 hover:border-[#82c04f]/20 rounded-2xl p-4 transition-colors duration-200"
           >
             <div
               class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -59,7 +59,7 @@
               }
             </div>
             <div>
-              <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-1">
+              <p class="text-[#82c04f]/60 text-[10px] tracking-widest uppercase mb-1">
                 {{ item.label }}
               </p>
               <p class="text-white text-sm font-semibold">{{ item.value }}</p>
@@ -78,16 +78,16 @@
           "
         >
           <div
-            class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm"
+            class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#82c04f]/30 rounded-tl-sm"
           ></div>
           <div
-            class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm"
+            class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#82c04f]/30 rounded-tr-sm"
           ></div>
           <div
-            class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm"
+            class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#82c04f]/30 rounded-bl-sm"
           ></div>
           <div
-            class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm"
+            class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#82c04f]/30 rounded-br-sm"
           ></div>
 
           <form
@@ -98,12 +98,12 @@
           >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
-                <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الاسم</label>
+                <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase">الاسم</label>
                 <input
                   type="text"
                   placeholder="اكتب اسمك"
                   formControlName="name"
-                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200"
                 />
                 @if (
                   contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']
@@ -112,14 +112,14 @@
                 }
               </div>
               <div class="flex flex-col gap-1.5">
-                <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+                <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase"
                   >البريد الإلكتروني</label
                 >
                 <input
                   type="email"
                   placeholder="example@email.com"
                   formControlName="email"
-                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200"
                 />
                 @if (
                   contactForm.get('email')?.touched &&
@@ -135,12 +135,12 @@
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الرسالة</label>
+              <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase">الرسالة</label>
               <textarea
                 rows="4"
                 placeholder="اكتب رسالتك هنا..."
                 formControlName="message"
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200 resize-none"
               ></textarea>
               @if (
                 contactForm.get('message')?.touched &&
@@ -156,14 +156,14 @@
             </div>
 
             <div
-              class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent"
+              class="h-px bg-gradient-to-r from-transparent via-[#82c04f]/15 to-transparent"
             ></div>
 
             <button
               type="submit"
               class="relative flex disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm tracking-wider overflow-hidden cursor-pointer not-[disabled]:group"
               style="
-                background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
                 color: #0a0a0a;
               "
               [disabled]="contactForm.invalid || isLoading()"
@@ -182,7 +182,7 @@
                 </span>
                 <div
                   class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                  style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
                 ></div>
               }
             </button>
@@ -194,7 +194,7 @@
 
   <div class="grid md:grid-cols-2 gap-8 mb-16">
     <div class="p-8 rounded-2xl shadow-sm hover:shadow-lg transition border border-gray-800">
-      <div class="text-yellow-500 text-3xl mb-4">🎯</div>
+      <div class="text-green-500 text-3xl mb-4">🎯</div>
       <h3 class="text-xl font-semibold text-white mb-3">رؤيتنا</h3>
       <p class="text-gray-400 leading-relaxed">
         نسعى لأن نكون من أكثر متاجر الموبايلات الإلكترونية ثقة في السوق المصري، من خلال تقديم تجربة
@@ -203,7 +203,7 @@
     </div>
 
     <div class="p-8 rounded-2xl shadow-sm hover:shadow-lg transition border border-gray-800">
-      <div class="text-yellow-500 text-3xl mb-4">🚀</div>
+      <div class="text-green-500 text-3xl mb-4">🚀</div>
       <h3 class="text-xl font-semibold text-white mb-3">مهمتنا</h3>
       <p class="text-gray-400 leading-relaxed">
         توفير أحدث الموبايلات الأصلية بأسعار واضحة ومنافسة، مع ضمان تجربة شراء تعتمد على الفحص قبل

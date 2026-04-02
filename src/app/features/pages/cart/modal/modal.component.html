@@ -14,47 +14,49 @@
       (click)="$event.stopPropagation()"
     >
       <div
-        class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm pointer-events-none"
+        class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#82c04f]/30 rounded-tr-sm pointer-events-none"
       ></div>
       <div
-        class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm pointer-events-none"
+        class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#82c04f]/30 rounded-tl-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm pointer-events-none"
+        class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#82c04f]/30 rounded-br-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm pointer-events-none"
+        class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#82c04f]/30 rounded-bl-sm pointer-events-none"
       ></div>
 
       <div class="flex items-center justify-between px-6 pt-6 pb-4">
         <div>
-          <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase mb-1">LUXA Store</p>
+          <p class="text-[#82c04f]/50 text-[10px] tracking-widest uppercase mb-1">
+            Mister Mobile Store
+          </p>
           <h2 class="text-white font-black text-xl">
-            تأكيد <span class="text-[#D4AF37]">الطلب</span>
+            تأكيد <span class="text-[#82c04f]">الطلب</span>
           </h2>
         </div>
         <button
           (click)="close()"
-          class="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 text-white/30 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+          class="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 text-white/30 hover:text-[#82c04f] hover:bg-[#82c04f]/10 transition-all duration-200 cursor-pointer"
         >
           <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
 
-      <div class="h-px bg-linear-to-r from-transparent via-[#D4AF37]/15 to-transparent mx-6"></div>
+      <div class="h-px bg-linear-to-r from-transparent via-[#82c04f]/15 to-transparent mx-6"></div>
 
       <div class="px-6 pt-5" dir="rtl">
         <div
-          class="flex items-center gap-3 bg-[#D4AF37]/8 border border-[#D4AF37]/20 rounded-xl px-4 py-3"
+          class="flex items-center gap-3 bg-[#82c04f]/8 border border-[#82c04f]/20 rounded-xl px-4 py-3"
         >
           <div
             class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
             style="background: rgba(212, 175, 55, 0.15)"
           >
-            <i class="fa-solid fa-money-bill-wave text-[#D4AF37] text-sm"></i>
+            <i class="fa-solid fa-money-bill-wave text-[#82c04f] text-sm"></i>
           </div>
           <div>
-            <p class="text-[#D4AF37] text-sm font-bold">الدفع عند الاستلام</p>
+            <p class="text-[#82c04f] text-sm font-bold">الدفع عند الاستلام</p>
             <p class="text-white/30 text-xs">سيتم تحصيل المبلغ عند وصول الطلب</p>
           </div>
         </div>
@@ -67,7 +69,7 @@
         dir="rtl"
       >
         <div class="flex flex-col gap-1.5">
-          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+          <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase"
             >ملاحظات (اختياري)</label
           >
           <textarea
@@ -75,11 +77,11 @@
             formControlName="note"
             rows="3"
             placeholder="لو عندك أي ملاحظة يرجى كتابتها..."
-            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200 resize-none"
           ></textarea>
         </div>
 
-        <div class="h-px bg-linear-to-r from-transparent via-[#D4AF37]/15 to-transparent"></div>
+        <div class="h-px bg-linear-to-r from-transparent via-[#82c04f]/15 to-transparent"></div>
 
         <div class="flex gap-3">
           <button
@@ -94,7 +96,7 @@
             type="submit"
             class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed"
             style="
-              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
               color: #0a0a0a;
             "
           >
@@ -111,7 +113,7 @@
             </span>
             <div
               class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+              style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
             ></div>
           </button>
         </div>
