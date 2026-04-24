@@ -127,7 +127,7 @@
               ></div>
               <img
                 loading="lazy"
-                [src]="'http://127.0.0.1:8000' + product.image_cover"
+                [src]="'https://api.mrmobilestore.com' + product.image_cover"
                 [alt]="product.title"
                 class="h-36 w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
               />
@@ -148,8 +148,13 @@
                   <span class="text-[#82c04f]/50 text-xs">ج.م</span>
                 </div>
                 <span class="flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#82c04f] animate-pulse"></span>
-                  <span class="text-white/30 text-[10px]">{{ product.status }}</span>
+                  <span
+                    class="w-1.5 h-1.5 rounded-full animate-pulse"
+                    [class]="product.total_quantity > 0 ? 'bg-[#82c04f]' : 'bg-red-500'"
+                  ></span>
+                  <span class="text-white/30 text-[10px]">{{
+                    product.total_quantity > 0 ? 'متوفر' : 'غير متوفر'
+                  }}</span>
                 </span>
               </div>
             </div>
@@ -173,7 +178,7 @@
               ></div>
               <img
                 loading="lazy"
-                [src]="'http://127.0.0.1:8000' + product.image_cover"
+                [src]="'https://api.mrmobilestore.com' + product.image_cover"
                 [alt]="product.title"
                 class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105"
               />
@@ -194,8 +199,13 @@
                 <span class="text-white/30 text-xs">{{ product.operating_system }}</span>
                 <span class="text-white/10">•</span>
                 <span class="flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#82c04f] animate-pulse"></span>
-                  <span class="text-white/30 text-xs">{{ product.status }}</span>
+                  <span
+                    class="w-1.5 h-1.5 rounded-full animate-pulse"
+                    [class]="product.total_quantity > 0 ? 'bg-[#82c04f]' : 'bg-red-500'"
+                  ></span>
+                  <span class="text-white/30 text-xs">{{
+                    product.total_quantity > 0 ? 'متوفر' : 'غير متوفر'
+                  }}</span>
                 </span>
               </div>
             </div>

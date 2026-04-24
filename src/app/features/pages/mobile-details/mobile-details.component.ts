@@ -3,18 +3,30 @@ import { Iproduct, IColorItem } from '../../../core/interfaces/productServices/i
 import { ToastUtilService } from '../../../core/toastrServices/toastr.services';
 import { Iglobal } from '../../../shared/interfaces/globalInterface/iglobal.interface';
 import { ProductServicesServices } from './../../../core/services/productServices/product-services.services';
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  isWritableSignal,
+  Signal,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { CartServices } from '../../../core/services/cartServices/cart.services';
 import { mobileData } from '../../../core/interfaces/cartItem/cart.interface';
+import { RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mobile-details',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './mobile-details.component.html',
   styleUrl: './mobile-details.component.css',
 })
 export class MobileDetailsComponent {
   private readonly productServicesServices = inject(ProductServicesServices);
+  private readonly title = inject(Title);
   private readonly cartServices = inject(CartServices);
   mobileDetails: WritableSignal<Iproduct | null> = signal(null);
   private readonly activatedRoute = inject(ActivatedRoute);
@@ -23,6 +35,13 @@ export class MobileDetailsComponent {
   selectedColor: WritableSignal<IColorItem | null> = signal(null);
   mobileDetailLoading: WritableSignal<boolean> = signal(false);
   selectedImage = signal<any>(null);
+  constructor() {
+    effect(() => {
+      if (this.mobileDetails()) {
+        this.title.setTitle(this.mobileDetails()!.title + ' تفاصيل ');
+      }
+    });
+  }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -73,9 +92,9 @@ export class MobileDetailsComponent {
   }
 
   onWhatsAppOrder(): void {
-    const phone = '201120203912';
+    const phone = '201035405480';
     const message = encodeURIComponent(
-      `مرحباً، حابب أطلب موبايل ${this.mobileDetails()?.title} ممكن أعرف التفاصيل؟`,
+      `مرحباً، محتاج أطلب موبايل ${this.mobileDetails()?.title} ممكن أعرف التفاصيل؟`,
     );
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   }

@@ -51,6 +51,8 @@ export class ProfileComponent {
         this.orders.set(res.data);
       },
       error: (err) => {
+        console.log(err);
+
         this.toastr.error('يرجى اعادة تسجيل الدخول', 'فشل');
       },
     });

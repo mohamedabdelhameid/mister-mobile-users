@@ -1,0 +1,243 @@
+<div class="bg-black text-white font-['Tajawal',sans-serif] py-16 px-4" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(55, 212, 89, 0.07) 0%, transparent 70%)"
+    ></div>
+    <div
+      class="absolute bottom-[5%] left-[-5%] w-[400px] h-[400px] rounded-full"
+      style="background: radial-gradient(circle, rgba(60, 212, 55, 0.04) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-black text-white mb-3">
+        اشتري دلوقتي <span class="text-[#82c04f]">وادفع بعدين</span>
+      </h1>
+      <p class="text-white/30 text-sm leading-relaxed max-w-md mx-auto">
+        وفرنالك خيارين للتقسيط بأسهل الشروط — اختار اللي يناسبك واطلب موبايلك دلوقتي
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#82c04f]/20 transition-all duration-300 group"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+
+        <div
+          class="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#82c04f]/20 rounded-tr-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#82c04f]/20 rounded-bl-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-black text-lg"
+              style="background: linear-gradient(135deg, #c9b0f3, #ecd8ff)"
+            >
+              <img src="/mylo.png" alt="" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p class="text-white font-black text-xl leading-none">mylo</p>
+              <p class="text-white/30 text-xs mt-0.5">تقسيط بدون فوائد</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 mb-6">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(124, 58, 237, 0.15)"
+              >
+                <i class="fa-solid fa-percent text-purple-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">بدون فوائد</p>
+                <p class="text-white/30 text-xs">قسّط مشترياتك بدون أي فوائد إضافية</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(124, 58, 237, 0.15)"
+              >
+                <i class="fa-solid fa-calendar-days text-purple-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">حتى 12 شهر</p>
+                <p class="text-white/30 text-xs">اختار المدة اللي تناسبك</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(124, 58, 237, 0.15)"
+              >
+                <i class="fa-solid fa-bolt text-purple-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">موافقة سريعة</p>
+                <p class="text-white/30 text-xs">اعرف نتيجتك في دقائق</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="h-px mb-5"
+            style="
+              background: linear-gradient(
+                to right,
+                transparent,
+                rgba(124, 58, 237, 0.2),
+                transparent
+              );
+            "
+          ></div>
+
+          <p class="text-white/30 text-[10px] tracking-widest uppercase mb-3">خطط التقسيط</p>
+          <div class="grid grid-cols-3 gap-2 mb-5">
+            @for (
+              plan of [
+                { months: 3, label: '3 أشهر' },
+                { months: 6, label: '6 أشهر' },
+                { months: 12, label: '12 شهر' },
+              ];
+              track plan.months
+            ) {
+              <div
+                class="flex flex-col items-center gap-1 bg-purple-500/8 border border-purple-500/20 rounded-xl py-2.5 px-2 text-center"
+              >
+                <p class="text-purple-400 font-black text-lg leading-none">{{ plan.months }}</p>
+                <p class="text-white/30 text-[10px]">شهر</p>
+              </div>
+            }
+          </div>
+
+          <a
+            href="https://myloapp.com/"
+            target="_blank"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white border border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/10 transition-all duration-200 cursor-pointer"
+          >
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-purple-400"></i>
+            اعرف أكتر عن mylo
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#82c04f]/20 transition-all duration-300 group"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+
+        <div
+          class="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#82c04f]/20 rounded-tr-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#82c04f]/20 rounded-bl-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-black text-lg"
+              style="background: linear-gradient(135deg, #ea580c, #f97316)"
+            >
+              <img src="/valU.png" alt="" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p class="text-white font-black text-xl leading-none">valU</p>
+              <p class="text-white/30 text-xs mt-0.5">تمويل مرن وسريع</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 mb-6">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(234, 88, 12, 0.15)"
+              >
+                <i class="fa-solid fa-shield-halved text-orange-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">تمويل معتمد</p>
+                <p class="text-white/30 text-xs">شركة تمويل معتمدة من البنك المركزي</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(234, 88, 12, 0.15)"
+              >
+                <i class="fa-solid fa-calendar-days text-orange-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">حتى 60 شهر</p>
+                <p class="text-white/30 text-xs">فترات سداد أطول وأقساط أصغر</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(234, 88, 12, 0.15)"
+              >
+                <i class="fa-solid fa-mobile-screen text-orange-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">تقديم أونلاين</p>
+                <p class="text-white/30 text-xs">قدّم طلبك من موبايلك في دقيقتين</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="h-px mb-5"
+            style="
+              background: linear-gradient(
+                to right,
+                transparent,
+                rgba(234, 88, 12, 0.2),
+                transparent
+              );
+            "
+          ></div>
+
+          <p class="text-white/30 text-[10px] tracking-widest uppercase mb-3">خطط التقسيط</p>
+          <div class="grid grid-cols-3 gap-2 mb-5">
+            @for (
+              plan of [
+                { months: 12, label: '12 شهر' },
+                { months: 24, label: '24 شهر' },
+                { months: 60, label: '60 شهر' },
+              ];
+              track plan.months
+            ) {
+              <div
+                class="flex flex-col items-center gap-1 bg-orange-500/8 border border-orange-500/20 rounded-xl py-2.5 px-2 text-center"
+              >
+                <p class="text-orange-400 font-black text-lg leading-none">{{ plan.months }}</p>
+                <p class="text-white/30 text-[10px]">شهر</p>
+              </div>
+            }
+          </div>
+
+          <a
+            href="https://valu.com.eg"
+            target="_blank"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white border border-orange-500/30 hover:border-orange-500/60 hover:bg-orange-500/10 transition-all duration-200 cursor-pointer"
+          >
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-orange-400"></i>
+            اعرف أكتر عن valU
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

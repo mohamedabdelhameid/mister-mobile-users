@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class HeroSectionComponent {
   readonly router = inject(Router);
   onWhatsAppOrder(): void {
-    const phone = '201120203912';
-    const message = encodeURIComponent('مرحباً، حابب أطلب موبايل لو سمحت. ممكن أعرف التفاصيل؟');
+    const phone = '201035405480';
+    const message = encodeURIComponent('مرحباً، محتاج أطلب موبايل لو سمحت. ممكن أعرف التفاصيل؟');
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   }
 }

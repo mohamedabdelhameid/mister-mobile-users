@@ -4,6 +4,7 @@ import { HorizontalBarComponent } from './horizontal-bar/horizontal-bar.componen
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
 import { HomeBrandingComponent } from './home-branding/home-branding.component';
 import { HomeProductComponent } from './home-product/home-product.component';
+import { PaymentlaterComponent } from './paymentlater/paymentlater.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { HomeProductComponent } from './home-product/home-product.component';
     PaymentMethodComponent,
     HomeBrandingComponent,
     HomeProductComponent,
+    PaymentlaterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

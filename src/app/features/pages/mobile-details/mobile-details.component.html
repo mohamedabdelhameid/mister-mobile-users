@@ -36,10 +36,10 @@
               loading="lazy"
               [src]="
                 selectedImage()?.image
-                  ? 'http://127.0.0.1:8000' + selectedImage()!.image
+                  ? 'https://api.mrmobilestore.com' + selectedImage()!.image
                   : selectedColor()?.images?.length
-                    ? 'http://127.0.0.1:8000' + selectedColor()!.images[0].image
-                    : 'http://127.0.0.1:8000' + mobileDetails()?.image_cover
+                    ? 'https://api.mrmobilestore.com' + selectedColor()!.images[0].image
+                    : 'https://api.mrmobilestore.com' + mobileDetails()?.image_cover
               "
               [alt]="mobileDetails()?.title"
               class="w-full h-[420px] object-contain p-6 relative z-0 transition-all duration-500"
@@ -78,7 +78,7 @@
                     >
                       <img
                         loading="lazy"
-                        [src]="'http://127.0.0.1:8000' + img.image"
+                        [src]="'https://api.mrmobilestore.com' + img.image"
                         class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                       />
                       @if (selectedImage()?.id === img.id) {
@@ -162,7 +162,6 @@
                 { label: 'الكاميرا', value: mobileDetails()?.camera, icon: '⬡' },
                 { label: 'البطارية', value: mobileDetails()?.battery + ' mAh', icon: '⚡' },
                 { label: 'الشبكة', value: mobileDetails()?.network_support, icon: '◉' },
-                { label: 'سنة الإصدار', value: mobileDetails()?.release_year, icon: '◷' },
               ];
               track spec.label
             ) {
@@ -187,6 +186,7 @@
                 @for (colorItem of mobileDetails()?.colors; track colorItem.id) {
                   <button
                     class="relative w-10 h-10 rounded-full transition-all duration-200 cursor-pointer"
+                    style="box-shadow: 0 0 10px #82c04f"
                     [style.backgroundColor]="colorItem.color.hex_code"
                     [title]="colorItem.color.name"
                     (click)="selectColor(colorItem)"
@@ -253,49 +253,107 @@
       </div>
     </div>
 
-    <div class="py-16 container mx-auto">
-      <h2 class="text-3xl font-bold text-center text-green-500 mb-10">لماذا تختارنا ؟</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">📦</div>
-          <h4 class="font-semibold text-white mb-2">منتجات أصلية 100%</h4>
-          <p class="text-gray-400 text-sm">
-            جميع الأجهزة جديدة ومغلقة من الشركة المصنعة مع ضمان رسمي.
-          </p>
+    <div
+      class="mt-8 h-px max-w-4xl mx-auto"
+      style="
+        background: linear-gradient(to right, transparent, rgba(55, 212, 120, 0.2), transparent);
+      "
+    ></div>
+    <div class="py-16 container max-w-4xl mx-auto">
+      <div class="relative bg-white/3 border border-white/5 rounded-2xl p-6 mb-6">
+        <p class="text-[#82c04f]/60 text-[10px] tracking-widest uppercase mb-5">
+          إزاي تطلب بالتقسيط؟
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          @for (
+            step of [
+              {
+                num: '١',
+                icon: 'fa-solid fa-mobile-screen',
+                title: 'اختار الموبايل',
+                desc: 'تصفّح المتجر واختار الجهاز اللي عايزه',
+              },
+              {
+                num: '٢',
+                icon: 'fa-solid fa-headset',
+                title: 'تواصل معنا',
+                desc: 'تواصل معنا عبر واتساب وقولنا إنك عايز تقسيط',
+              },
+              {
+                num: '٣',
+                icon: 'fa-solid fa-gift',
+                title: 'استلم جهازك',
+                desc: 'بعد الموافقة استلم جهازك وابدأ تقسيطك',
+              },
+            ];
+            track step.num
+          ) {
+            <div class="flex flex-col items-center text-center gap-3">
+              <div class="relative">
+                <div
+                  class="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style="
+                    background: rgba(55, 212, 68, 0.1);
+                    border: 1px solid rgba(55, 212, 94, 0.2);
+                  "
+                >
+                  <i [class]="step.icon + ' text-[#82c04f] text-base'"></i>
+                </div>
+                <div
+                  class="absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black text-black"
+                  style="background: #82c04f"
+                >
+                  {{ step.num }}
+                </div>
+              </div>
+              <div>
+                <p class="text-white font-bold text-sm">{{ step.title }}</p>
+                <p class="text-white/30 text-xs mt-1 leading-relaxed">{{ step.desc }}</p>
+              </div>
+            </div>
+          }
         </div>
 
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">🔍</div>
-          <h4 class="font-semibold text-white mb-2">فحص قبل الدفع</h4>
-          <p class="text-gray-400 text-sm">
-            يمكنك التأكد من سلامة المنتج ومطابقته قبل إتمام الدفع النهائي.
-          </p>
-        </div>
+        <p class="text-center text-white/15 text-xs mt-4 leading-relaxed">
+          التقسيط يتم عبر شركاء معتمدين — مستر موبايل وسيط فقط ولا تتحمل أي مسؤولية عن شروط التمويل
+        </p>
+      </div>
 
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">💰</div>
-          <h4 class="font-semibold text-white mb-2">أسعار واضحة</h4>
-          <p class="text-gray-400 text-sm">عرض الأسعار بشكل شفاف بدون أي تكاليف مخفية.</p>
-        </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="https://wa.me/201035405480"
+          target="_blank"
+          class="relative flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
+          style="
+            background: linear-gradient(135deg, #82c04f 0%, #68f05c 50%, #82c04f 100%);
+            color: #0a0a0a;
+          "
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 fill-current flex-shrink-0"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.24-1.44l-.38-.22-3.67.96.98-3.58-.25-.4A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.17 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.16 8.16 0 0 1-2.4-1.48 9.01 9.01 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34z"
+              />
+            </svg>
+            تواصل معنا للتقسيط
+          </span>
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style="background: linear-gradient(135deg, #68f05c 0%, #82c04f 100%)"
+          ></div>
+        </a>
 
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">⚡</div>
-          <h4 class="font-semibold text-white mb-2">طلب سريع وسهل</h4>
-          <p class="text-gray-400 text-sm">خطوات بسيطة للحجز والتأكيد بدون تعقيد.</p>
-        </div>
-
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">🚚</div>
-          <h4 class="font-semibold text-white mb-2">شحن آمن</h4>
-          <p class="text-gray-400 text-sm">توصيل عبر شركات شحن موثوقة تسمح بالفحص قبل الاستلام.</p>
-        </div>
-
-        <div class="p-6 rounded-xl shadow-sm hover:shadow-lg transition border border-gray-800">
-          <div class="text-2xl mb-3 text-green-500">🤝</div>
-          <h4 class="font-semibold text-white mb-2">ثقة قبل الربح</h4>
-          <p class="text-gray-400 text-sm">هدفنا بناء علاقة طويلة مع العميل وليس مجرد عملية بيع.</p>
-        </div>
+        <a
+          routerLink="/mobiles"
+          class="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm text-white/40 border border-white/8 hover:border-[#82c04f]/30 hover:text-white/60 transition-all duration-200 cursor-pointer bg-white/3"
+        >
+          <i class="fa-solid fa-mobile-screen text-sm"></i>
+          تصفح الموبايلات
+        </a>
       </div>
     </div>
   </div>

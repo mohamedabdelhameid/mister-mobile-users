@@ -55,6 +55,7 @@ export class ModalComponent {
         });
         this.isCODLoading.set(false);
         this.checkoutForm.reset();
+        location.href = res.data.whatsapp_url;
         this.close();
       },
       error: (err) => {
