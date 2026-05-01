@@ -152,6 +152,15 @@
             }}</span>
           </div>
 
+          <div class="flex flex-col items-start gap-2">
+            <span class="text-lg text-[#82c04f] tracking-wider">
+              💳 تقسيط مرن بأكتر من طريقة تناسبك
+            </span>
+            <span class="text-lg text-[#82c04f] tracking-wider">
+              ✅ والدفع عند الاستلام لراحة وأمان أكتر
+            </span>
+          </div>
+
           <div class="grid grid-cols-2 gap-3">
             @for (
               spec of [
@@ -320,9 +329,8 @@
       </div>
 
       <div class="flex flex-col sm:flex-row gap-3">
-        <a
-          href="https://wa.me/201035405480"
-          target="_blank"
+        <button
+          (click)="onInstallmentOrder()"
           class="relative flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
           style="
             background: linear-gradient(135deg, #82c04f 0%, #68f05c 50%, #82c04f 100%);
@@ -345,7 +353,7 @@
             class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style="background: linear-gradient(135deg, #68f05c 0%, #82c04f 100%)"
           ></div>
-        </a>
+        </button>
 
         <a
           routerLink="/mobiles"

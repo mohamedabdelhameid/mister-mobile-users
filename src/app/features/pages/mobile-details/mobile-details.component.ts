@@ -99,6 +99,14 @@ export class MobileDetailsComponent {
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   }
 
+  onInstallmentOrder(): void {
+    const phone = '201035405480';
+    const message = encodeURIComponent(
+      `مرحباً، محتاج أعرف تفاصيل تقسيط موبايل ${this.mobileDetails()?.title} وإيه الأنظمة المتاحة؟`,
+    );
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+  }
+
   addMobileToCart(): void {
     if (!this.selectedColor()) {
       this.toastr.error('يجب اختيار اللون اولا', 'فشل');

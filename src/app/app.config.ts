@@ -14,6 +14,8 @@ import { loadingInterceptor } from './core/interceptor/loading/loading-intercept
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { provideNgxSkeletonLoader } from 'ngx-skeleton-loader';
+import { provideServiceWorker } from '@angular/service-worker';
+import { isDevMode } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,5 +36,9 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideAnimations(),
     importProvidersFrom(NgxSpinnerModule),
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
 };

@@ -10,7 +10,7 @@
     ></div>
   </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto">
+  <div class="relative z-10 max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <h1 class="text-4xl font-black text-white mb-3">
         اشتري دلوقتي <span class="text-[#82c04f]">وادفع بعدين</span>
@@ -20,7 +20,7 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
       <div
         class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#82c04f]/20 transition-all duration-300 group"
       >
@@ -45,7 +45,7 @@
             </div>
             <div>
               <p class="text-white font-black text-xl leading-none">mylo</p>
-              <p class="text-white/30 text-xs mt-0.5">تقسيط بدون فوائد</p>
+              <p class="text-white/30 text-xs mt-3.5">تقسيط بدون فوائد</p>
             </div>
           </div>
 
@@ -154,7 +154,7 @@
             </div>
             <div>
               <p class="text-white font-black text-xl leading-none">valU</p>
-              <p class="text-white/30 text-xs mt-0.5">تمويل مرن وسريع</p>
+              <p class="text-white/30 text-xs mt-3.5">تمويل مرن وسريع</p>
             </div>
           </div>
 
@@ -235,6 +235,117 @@
           >
             <i class="fa-solid fa-arrow-up-right-from-square text-xs text-orange-400"></i>
             اعرف أكتر عن valU
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#82c04f]/20 transition-all duration-300 group"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+
+        <div
+          class="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#82c04f]/20 rounded-tr-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#82c04f]/20 rounded-bl-sm group-hover:border-[#82c04f]/40 transition-colors duration-300"
+        ></div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+              style="background: linear-gradient(135deg, #ff92c9, #ffcfe9)"
+            >
+              <img src="/sympl.png" alt="" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p class="text-white font-black text-xl leading-none">Sympl</p>
+              <p class="text-white/30 text-xs mt-3.5">اشتري دلوقتي، ادفع بعدين</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 mb-6">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(236, 72, 153, 0.15)"
+              >
+                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">موافقة سريعة</p>
+                <p class="text-white/30 text-xs">قدّم واعرف نتيجة طلبك خلال دقائق</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(236, 72, 153, 0.15)"
+              >
+                <i class="fa-solid fa-credit-card text-pink-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">تقسيط بكارت البنك</p>
+                <p class="text-white/30 text-xs">من غير إجراءات معقدة أو ورق كتير</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                style="background: rgba(236, 72, 153, 0.15)"
+              >
+                <i class="fa-solid fa-bolt text-pink-400 text-xs"></i>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">دفعات مريحة</p>
+                <p class="text-white/30 text-xs">قسّط مشترياتك على دفعات تناسبك</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="h-px mb-5"
+            style="
+              background: linear-gradient(
+                to right,
+                transparent,
+                rgba(236, 72, 153, 0.2),
+                transparent
+              );
+            "
+          ></div>
+
+          <p class="text-white/30 text-[10px] tracking-widest uppercase mb-3">عدد الدفعات</p>
+          <div class="grid grid-cols-3 gap-2 mb-5">
+            @for (
+              plan of [
+                { months: 3, label: '3 دفعات' },
+                { months: 4, label: '4 دفعات' },
+                { months: 5, label: '5 دفعات' },
+              ];
+              track plan.months
+            ) {
+              <div
+                class="flex flex-col items-center gap-1 bg-pink-500/8 border border-pink-500/20 rounded-xl py-2.5 px-2 text-center"
+              >
+                <p class="text-pink-400 font-black text-lg leading-none">{{ plan.months }}</p>
+                <p class="text-white/30 text-[10px]">دفعات</p>
+              </div>
+            }
+          </div>
+
+          <a
+            href="https://sympl.ai"
+            target="_blank"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-sm text-white border border-pink-500/30 hover:border-pink-500/60 hover:bg-pink-500/10 transition-all duration-200 cursor-pointer"
+          >
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-pink-400"></i>
+            اعرف أكتر عن Sympl
           </a>
         </div>
       </div>
