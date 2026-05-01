@@ -5,9 +5,7 @@
   <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3">
     <a routerLink="/" class="flex items-center gap-2">
       <img loading="lazy" src="./mobileLogo.png" class="h-10" alt="Mister Mobile Logo" />
-      <span class="hidden sm:block sm:text-lg md:text-xl font-black text-[#82c04f]"
-        >مستر موبايل</span
-      >
+      <span class="hidden lg:block lg:text-xl font-black text-[#82c04f]">مستر موبايل</span>
     </a>
 
     <ul class="hidden md:flex items-center gap-1">
@@ -45,6 +43,15 @@
           class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
         >
           بحث عن هاتف
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/comparison"
+          routerLinkActive="!text-[#82c04f]"
+          class="px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          مقارنة الهواتف
         </a>
       </li>
       <li>
@@ -184,6 +191,16 @@
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
             <i class="fa-solid fa-mobile-screen text-xs text-[#82c04f]/40 w-4"></i>متجرنا
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/comparison"
+            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
+            (click)="isMenuOpen = false"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
+          >
+            <i class="fa-solid fa-code-compare text-xs text-[#82c04f]/40 w-4"></i>مقارنة الهواتف
           </a>
         </li>
         <li>

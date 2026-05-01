@@ -39,6 +39,12 @@ export const routes: Routes = [
     title: 'بحث عن هاتف',
   },
   {
+    path: 'comparison',
+    loadComponent: () =>
+      import('./features/pages/comparison/comparison.component').then((m) => m.ComparisonComponent),
+    title: 'مقارنة هواتف',
+  },
+  {
     path: 'policies',
     loadComponent: () =>
       import('./features/pages/policies/policies.component').then((m) => m.PoliciesComponent),

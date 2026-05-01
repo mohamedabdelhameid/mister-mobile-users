@@ -1,0 +1,359 @@
+<div
+  class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-10 px-3 md:py-16 md:px-4"
+  dir="rtl"
+>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="flex-1 h-px bg-gradient-to-l from-green-500/30 to-transparent"></div>
+      <span
+        class="text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-green-400 whitespace-nowrap"
+        >Mister Mobile Store</span
+      >
+      <div class="flex-1 h-px bg-gradient-to-r from-green-500/30 to-transparent"></div>
+    </div>
+
+    <div class="text-center mb-8">
+      <h1 class="text-2xl md:text-4xl font-black text-white mb-2">
+        مقارنة <span class="text-green-400">الهواتف</span>
+      </h1>
+      <p class="text-white/50 text-xs md:text-sm">اكتب اسم الهاتف واختار من النتايج</p>
+    </div>
+
+    @if (isLoading()) {
+      <div class="space-y-4 animate-pulse">
+        <div class="grid grid-cols-2 gap-3">
+          @for (item of [1, 2]; track item) {
+            <div class="bg-[#111] border border-white/10 rounded-2xl p-4">
+              <div class="w-16 h-24 md:w-24 md:h-32 mx-auto rounded-xl bg-white/5 mb-3"></div>
+              <div class="space-y-2 text-center mb-3">
+                <div class="w-12 h-2 bg-white/5 rounded mx-auto"></div>
+                <div class="w-24 h-3 bg-white/10 rounded mx-auto"></div>
+              </div>
+              <div class="w-16 h-4 bg-white/10 rounded mx-auto mb-3"></div>
+              <div class="h-9 rounded-xl bg-white/5"></div>
+            </div>
+          }
+        </div>
+
+        <div class="bg-[#111] border border-white/10 rounded-2xl overflow-hidden">
+          <div class="grid grid-cols-3 px-3 py-3 border-b border-white/10 bg-white/5 gap-2">
+            <div class="h-2 w-10 bg-white/10 rounded"></div>
+            <div class="h-2 w-16 bg-white/10 rounded mx-auto"></div>
+            <div class="h-2 w-16 bg-white/10 rounded mr-auto"></div>
+          </div>
+          @for (row of [1, 2, 3, 4, 5, 6, 7, 8]; track row) {
+            <div class="grid grid-cols-3 px-3 py-3 border-b border-white/5 gap-2">
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded bg-white/10 flex-shrink-0"></div>
+                <div class="w-12 h-2 rounded bg-white/10"></div>
+              </div>
+              <div class="flex justify-center">
+                <div class="w-12 h-2 rounded bg-white/10"></div>
+              </div>
+              <div class="flex justify-start"><div class="w-12 h-2 rounded bg-white/10"></div></div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    @if (!isLoading()) {
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <div
+          class="bg-[#111] border-2 rounded-2xl p-3 md:p-5 flex flex-col items-center gap-3 transition-all duration-300"
+          [ngClass]="selectedPhone1() ? 'border-green-500/50' : 'border-white/10'"
+        >
+          @if (selectedPhone1(); as p1) {
+            <div
+              class="w-16 h-24 md:w-24 md:h-32 bg-[#1a1a1a] rounded-xl border border-white/10 flex items-center justify-center overflow-hidden"
+            >
+              <img
+                [src]="apiLink.imageApiLink + p1.image_cover"
+                [alt]="p1.title"
+                class="w-14 h-20 md:w-20 md:h-28 object-contain"
+              />
+            </div>
+            <div class="text-center">
+              <p
+                class="text-green-400 text-[9px] md:text-[10px] tracking-widest uppercase font-bold"
+              >
+                {{ p1.brand.name }}
+              </p>
+              <h2 class="text-white font-black text-xs md:text-sm mt-1 leading-snug line-clamp-2">
+                {{ p1.title }}
+              </h2>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-green-400 font-black text-base md:text-xl">{{
+                p1.final_price | number
+              }}</span>
+              <span class="text-white/60 text-xs">ج.م</span>
+            </div>
+            <button
+              (click)="clearPhone1()"
+              class="w-full py-2 rounded-xl border border-white/15 text-white/60 text-[11px] hover:border-red-500/40 hover:text-red-400 transition-all duration-200"
+            >
+              <i class="fa-solid fa-xmark ml-1"></i> تغيير
+            </button>
+          } @else {
+            <div
+              class="w-16 h-24 md:w-24 md:h-32 bg-[#1a1a1a] rounded-xl border border-dashed border-white/15 flex items-center justify-center"
+            >
+              <i class="fa-solid fa-mobile-screen text-white/20 text-2xl md:text-3xl"></i>
+            </div>
+            <p class="text-white/60 text-[11px] font-semibold">الهاتف الأول</p>
+            <div class="relative w-full">
+              <input
+                type="text"
+                placeholder="ابحث..."
+                [ngModel]="search1()"
+                (ngModelChange)="search1.set($event); showDropdown1.set(true)"
+                (focus)="showDropdown1.set(true)"
+                (blur)="$event.relatedTarget || showDropdown1.set(false)"
+                class="w-full bg-[#1a1a1a] border border-white/15 rounded-xl px-3 py-2.5 text-white text-xs placeholder-white/30 outline-none focus:border-green-500/50 transition-colors"
+              />
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-xs pointer-events-none"
+              ></i>
+
+              @if (showDropdown1() && filteredMobiles1().length > 0) {
+                <div
+                  class="absolute top-full mt-1 w-full bg-[#1a1a1a] border border-white/15 rounded-xl overflow-hidden z-50 max-h-44 overflow-y-auto"
+                >
+                  @for (mobile of filteredMobiles1(); track mobile.id) {
+                    <button
+                      (mousedown)="selectPhone1(mobile)"
+                      class="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-colors text-right"
+                    >
+                      <img
+                        [src]="apiLink.imageApiLink + mobile.image_cover"
+                        [alt]="mobile.title"
+                        class="w-7 h-9 object-contain rounded flex-shrink-0"
+                      />
+                      <div class="flex-1 min-w-0">
+                        <p class="text-white text-[11px] font-semibold">
+                          {{ mobile.title }}
+                        </p>
+                        <p class="text-green-400 text-[10px]">
+                          {{ mobile.final_price | number }} ج.م
+                        </p>
+                      </div>
+                    </button>
+                  }
+                </div>
+              }
+              @if (showDropdown1() && filteredMobiles1().length === 0 && search1().length > 0) {
+                <div
+                  class="absolute top-full mt-1 w-full bg-[#1a1a1a] border border-white/15 rounded-xl px-4 py-3 z-50"
+                >
+                  <p class="text-white/40 text-xs text-center">مفيش نتايج</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <div
+          class="bg-[#111] border-2 rounded-2xl p-3 md:p-5 flex flex-col items-center gap-3 transition-all duration-300"
+          [ngClass]="selectedPhone2() ? 'border-green-500/50' : 'border-white/10'"
+        >
+          @if (selectedPhone2(); as p2) {
+            <div
+              class="w-16 h-24 md:w-24 md:h-32 bg-[#1a1a1a] rounded-xl border border-white/10 flex items-center justify-center overflow-hidden"
+            >
+              <img
+                [src]="apiLink.imageApiLink + p2.image_cover"
+                [alt]="p2.title"
+                class="w-14 h-20 md:w-20 md:h-28 object-contain"
+              />
+            </div>
+            <div class="text-center">
+              <p
+                class="text-green-400 text-[9px] md:text-[10px] tracking-widest uppercase font-bold"
+              >
+                {{ p2.brand.name }}
+              </p>
+              <h2 class="text-white font-black text-xs md:text-sm mt-1 leading-snug line-clamp-2">
+                {{ p2.title }}
+              </h2>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="text-green-400 font-black text-base md:text-xl">{{
+                p2.final_price | number
+              }}</span>
+              <span class="text-white/60 text-xs">ج.م</span>
+            </div>
+            <button
+              (click)="clearPhone2()"
+              class="w-full py-2 rounded-xl border border-white/15 text-white/60 text-[11px] hover:border-red-500/40 hover:text-red-400 transition-all duration-200"
+            >
+              <i class="fa-solid fa-xmark ml-1"></i> تغيير
+            </button>
+          } @else {
+            <div
+              class="w-16 h-24 md:w-24 md:h-32 bg-[#1a1a1a] rounded-xl border border-dashed border-white/15 flex items-center justify-center"
+            >
+              <i class="fa-solid fa-mobile-screen text-white/20 text-2xl md:text-3xl"></i>
+            </div>
+            <p class="text-white/60 text-[11px] font-semibold">الهاتف الثاني</p>
+            <div class="relative w-full">
+              <input
+                type="text"
+                placeholder="ابحث..."
+                [ngModel]="search2()"
+                (ngModelChange)="search2.set($event); showDropdown2.set(true)"
+                (focus)="showDropdown2.set(true)"
+                (blur)="$event.relatedTarget || showDropdown2.set(false)"
+                class="w-full bg-[#1a1a1a] border border-white/15 rounded-xl px-3 py-2.5 text-white text-xs placeholder-white/30 outline-none focus:border-green-500/50 transition-colors"
+              />
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-xs pointer-events-none"
+              ></i>
+
+              @if (showDropdown2() && filteredMobiles2().length > 0) {
+                <div
+                  class="absolute top-full mt-1 w-full bg-[#1a1a1a] border border-white/15 rounded-xl overflow-hidden z-50 max-h-44 overflow-y-auto"
+                >
+                  @for (mobile of filteredMobiles2(); track mobile.id) {
+                    <button
+                      (mousedown)="selectPhone2(mobile)"
+                      class="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-colors text-right"
+                    >
+                      <img
+                        [src]="apiLink.imageApiLink + mobile.image_cover"
+                        [alt]="mobile.title"
+                        class="w-7 h-9 object-contain rounded flex-shrink-0"
+                      />
+                      <div class="flex-1 min-w-0">
+                        <p class="text-white text-[11px] font-semibold">
+                          {{ mobile.title }}
+                        </p>
+                        <p class="text-green-400 text-[10px]">
+                          {{ mobile.final_price | number }} ج.م
+                        </p>
+                      </div>
+                    </button>
+                  }
+                </div>
+              }
+              @if (showDropdown2() && filteredMobiles2().length === 0 && search2().length > 0) {
+                <div
+                  class="absolute top-full mt-1 w-full bg-[#1a1a1a] border border-white/15 rounded-xl px-4 py-3 z-50"
+                >
+                  <p class="text-white/40 text-xs text-center">مفيش نتايج</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      @if (canCompare()) {
+        <div class="bg-[#111] border border-white/10 rounded-2xl overflow-hidden mb-5">
+          <div class="grid grid-cols-3 bg-white/5 px-3 md:px-4 py-3 border-b border-white/10 gap-1">
+            <p class="text-green-400 text-[9px] md:text-[10px] tracking-widest uppercase font-bold">
+              المواصفات
+            </p>
+            <p
+              class="text-white/70 text-[9px] md:text-[10px] uppercase text-center font-semibold truncate"
+            >
+              {{ selectedPhone1()?.brand?.name }}
+            </p>
+            <p
+              class="text-white/70 text-[9px] md:text-[10px] uppercase text-left font-semibold truncate"
+            >
+              {{ selectedPhone2()?.brand?.name }}
+            </p>
+          </div>
+
+          @for (row of specRows; track row.key; let last = $last) {
+            <div
+              class="grid grid-cols-3 px-3 md:px-4 py-3 md:py-4 hover:bg-white/3 transition-colors gap-1"
+              [ngClass]="{ 'border-b border-white/8': !last }"
+            >
+              <div class="flex items-center gap-1.5">
+                <i
+                  class="fa-solid {{
+                    row.icon
+                  }} text-green-400 text-[10px] md:text-xs w-3 md:w-4 flex-shrink-0"
+                ></i>
+                <span class="text-white/70 text-[10px] md:text-xs font-medium leading-tight">{{
+                  row.label
+                }}</span>
+              </div>
+
+              <div class="text-center text-[10px] md:text-xs text-white/80 font-bold">
+                {{ getVal(selectedPhone1(), row.key) }}
+              </div>
+
+              <div class="text-left text-[10px] md:text-xs text-white/80 font-bold">
+                {{ getVal(selectedPhone2(), row.key) }}
+              </div>
+            </div>
+          }
+
+          <div
+            class="grid grid-cols-3 px-3 md:px-4 py-3 md:py-4 bg-white/3 border-t border-white/10 gap-1"
+          >
+            <div class="flex items-center gap-1.5">
+              <i
+                class="fa-solid fa-tag text-green-400 text-[10px] md:text-xs w-3 md:w-4 flex-shrink-0"
+              ></i>
+              <span class="text-white/70 text-[10px] md:text-xs font-medium">السعر</span>
+            </div>
+            <div class="text-center text-[10px] text-white/80 md:text-sm font-black">
+              {{ selectedPhone1()?.final_price ?? 0 | number
+              }}<span class="text-[9px] font-normal text-white/40 mr-0.5">ج.م</span>
+            </div>
+            <div class="text-left text-[10px] text-white/80 md:text-sm font-black">
+              {{ selectedPhone2()?.final_price ?? 0 | number
+              }}<span class="text-[9px] font-normal text-white/40 mr-0.5">ج.م</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center mb-6">
+          <button
+            (click)="resetComparison()"
+            class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 text-white/60 text-xs hover:border-red-500/40 hover:text-red-400 transition-all duration-200"
+          >
+            <i class="fa-solid fa-rotate-right text-xs"></i>
+            إعادة الاختيار
+          </button>
+        </div>
+      } @else {
+        <div
+          class="bg-[#111] border border-dashed border-white/10 rounded-2xl p-6 md:p-10 text-center mb-6"
+        >
+          <i class="fa-solid fa-code-compare text-white/15 text-3xl md:text-4xl mb-4 block"></i>
+          <p class="text-white/80 text-sm md:text-base font-black mb-2">
+            قارن بين أي هاتفين براحتك
+          </p>
+          <p class="text-white/45 text-xs md:text-sm leading-6 md:leading-7 max-w-lg mx-auto mb-5">
+            المقارنة هنا مجرد وسيلة تساعدك تشوف الفرق بين الموبايلات بسهولة وتختار الأنسب ليك حسب
+            استخدامك وميزانيتك ✨
+          </p>
+          <div
+            class="bg-white/[0.03] border border-white/10 rounded-2xl px-4 py-4 max-w-xl mx-auto"
+          >
+            <div class="flex items-center justify-center gap-2 mb-2">
+              <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
+              <p class="text-green-400 text-sm font-bold">محتار تختار إيه؟</p>
+            </div>
+            <p class="text-white/50 text-xs leading-6">
+              ابعتلنا على واتساب استخدامك أو الميزانية اللي محددها وإحنا نرشحلك أفضل قيمة مقابل سعر
+              💚
+            </p>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>
