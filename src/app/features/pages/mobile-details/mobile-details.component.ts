@@ -17,10 +17,11 @@ import { CartServices } from '../../../core/services/cartServices/cart.services'
 import { mobileData } from '../../../core/interfaces/cartItem/cart.interface';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-mobile-details',
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './mobile-details.component.html',
   styleUrl: './mobile-details.component.css',
 })

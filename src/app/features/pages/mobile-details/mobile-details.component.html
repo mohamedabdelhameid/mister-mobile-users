@@ -168,10 +168,16 @@
           </p>
 
           <div class="flex items-center gap-2 self-start">
-            <span class="w-2 h-2 rounded-full bg-[#82c04f] animate-pulse"></span>
-            <span class="text-xs text-[#82c04f] tracking-wider">{{
-              mobileDetails()?.total_quantity! > 0 ? 'متاح' : 'غير متاح'
-            }}</span>
+            <span
+              class="w-2 h-2 rounded-full animate-pulse"
+              [ngClass]="mobileDetails()?.total_quantity! > 0 ? 'bg-[#82c04f]' : 'bg-[#f31919]'"
+            >
+            </span>
+            <span
+              class="text-xs tracking-wider"
+              [ngClass]="mobileDetails()?.total_quantity! > 0 ? 'text-[#82c04f]' : 'text-[#f31919]'"
+              >{{ mobileDetails()?.total_quantity! > 0 ? 'متاح' : 'غير متاح' }}</span
+            >
           </div>
 
           <div class="flex flex-col items-start gap-2">
