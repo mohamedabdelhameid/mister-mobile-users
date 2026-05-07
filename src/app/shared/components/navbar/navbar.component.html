@@ -66,6 +66,20 @@
     </ul>
 
     <div class="flex items-center gap-2">
+      <a
+        routerLink="/search-mobiles"
+        routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
+      >
+        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+      </a>
+      <a
+        routerLink="/comparison"
+        routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
+      >
+        <i class="fa-solid fa-code-compare text-sm"></i>
+      </a>
       @if (!isLoggedIn()) {
         <a
           routerLink="/login"
@@ -90,21 +104,6 @@
               {{ countCart() }}
             </span>
           }
-        </a>
-
-        <a
-          routerLink="/search-mobiles"
-          routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
-          class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
-        >
-          <i class="fa-solid fa-magnifying-glass text-sm"></i>
-        </a>
-        <a
-          routerLink="/comparison"
-          routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
-          class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
-        >
-          <i class="fa-solid fa-code-compare text-sm"></i>
         </a>
 
         <div class="relative">
