@@ -92,6 +92,21 @@
           }
         </a>
 
+        <a
+          routerLink="/search-mobiles"
+          routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
+          class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
+        >
+          <i class="fa-solid fa-magnifying-glass text-sm"></i>
+        </a>
+        <a
+          routerLink="/comparison"
+          routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
+          class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
+        >
+          <i class="fa-solid fa-code-compare text-sm"></i>
+        </a>
+
         <div class="relative">
           <button
             type="button"
@@ -139,14 +154,6 @@
         </div>
       }
 
-      <a
-        routerLink="/search-mobiles"
-        routerLinkActive="!border-[#82c04f]/40 !text-[#82c04f]"
-        class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-white/40 border border-white/8 hover:border-[#82c04f]/40 hover:text-[#82c04f] transition-all duration-200"
-      >
-        <i class="fa-solid fa-magnifying-glass text-sm"></i>
-      </a>
-
       <button
         type="button"
         (click)="toggleMenu()"
@@ -191,16 +198,6 @@
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
           >
             <i class="fa-solid fa-mobile-screen text-xs text-[#82c04f]/40 w-4"></i>متجرنا
-          </a>
-        </li>
-        <li>
-          <a
-            routerLink="/comparison"
-            routerLinkActive="text-[#82c04f] bg-[#82c04f]/5"
-            (click)="isMenuOpen = false"
-            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150"
-          >
-            <i class="fa-solid fa-code-compare text-xs text-[#82c04f]/40 w-4"></i>مقارنة الهواتف
           </a>
         </li>
         <li>
