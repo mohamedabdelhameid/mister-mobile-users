@@ -16,7 +16,7 @@ import {
 import { CartServices } from '../../../core/services/cartServices/cart.services';
 import { mobileData } from '../../../core/interfaces/cartItem/cart.interface';
 import { RouterLink } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -36,10 +36,29 @@ export class MobileDetailsComponent {
   selectedColor: WritableSignal<IColorItem | null> = signal(null);
   mobileDetailLoading: WritableSignal<boolean> = signal(false);
   selectedImage = signal<any>(null);
+  private readonly meta = inject(Meta);
+
   constructor() {
     effect(() => {
       if (this.mobileDetails()) {
         this.title.setTitle(this.mobileDetails()!.title + ' تفاصيل ');
+
+        this.meta.updateTag({
+          property: 'og:title',
+          content: this.mobileDetails()!.title,
+        });
+        this.meta.updateTag({
+          property: 'og:description',
+          content: this.mobileDetails()!.description,
+        });
+        this.meta.updateTag({
+          property: 'og:image',
+          content: this.mobileDetails()?.image_cover!,
+        });
+        this.meta.updateTag({
+          property: 'og:url',
+          content: `https://mrmobilestore.com/mobile/${this.mobileDetails()?.id}`,
+        });
       }
     });
   }

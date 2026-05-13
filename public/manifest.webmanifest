@@ -2,7 +2,7 @@
   "name": "Mister Mobile Store",
   "short_name": "Mister Mobile",
   "theme_color": "#76BC21",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
