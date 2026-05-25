@@ -6,10 +6,17 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { NgxSpinnerComponent } from 'ngx-spinner';
+import { TopBannerComponent } from './shared/components/top-banner/top-banner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgxSpinnerComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    NgxSpinnerComponent,
+    TopBannerComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

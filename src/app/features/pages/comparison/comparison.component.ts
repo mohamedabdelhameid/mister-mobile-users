@@ -57,7 +57,6 @@ export class ComparisonComponent {
     { icon: 'fa-hard-drive', label: 'التخزين', key: 'storage' },
     { icon: 'fa-circle-dot', label: 'نظام التشغيل', key: 'operating_system' },
     { icon: 'fa-wifi', label: 'الشبكة', key: 'network_support' },
-    { icon: 'fa-calendar', label: 'سنة الإصدار', key: 'release_year' },
   ];
 
   subscription!: Subscription;
